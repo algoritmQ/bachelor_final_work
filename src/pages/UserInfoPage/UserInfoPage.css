@@ -1,0 +1,60 @@
+.userInfoPage{
+    /*border:1px solid red;*/
+    display:flex;
+    width:1300px;
+    min-height:750px;
+    flex-direction: column;
+}
+
+.userInfoPage-title{
+    /*border:0.3px solid blue;*/
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    width:1280px;
+    padding:10px;
+    margin-bottom:20px;
+}
+.userInfoPage-field{
+    /*border:0.3px solid blue;*/
+    display:flex;
+    flex-direction: row;
+    width:1300px;
+    min-height:700px;
+}
+.field-left{
+    /*border:0.1px solid blue;*/
+    width: 475px;
+    height: 190px;
+}
+.field-right{
+    /*border:0.1px solid green;*/
+    width: 810px;
+    min-height:700px;
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
+}
+.field-right-title{
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    font-size: 22px;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    /*border-bottom: 1px solid silver;*/
+}
+.field-right-title span{
+    cursor:pointer;
+}
+
+.field-right-ads, .field-right-ads-out-publ, .field-right-ads-active{
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:15px;
+}

@@ -1,0 +1,131 @@
+.viewAdPage{
+    display: flex;
+    width: 1300px;
+    height: 1300px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.viewAdPage .topBar{
+    /* border: 1px solid silver; */
+    display: flex;
+    flex-direction: row;
+    width: 1300px;
+    height: 710px;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.viewAdPage .leftTopBar{
+    display:flex;
+    flex-direction: column;
+    width:660px;
+    height:750px;
+    gap:10px;
+}
+
+.nameAd{
+    color:#0B107E;
+    font-size:32px;
+}
+
+.leftTopBar .photos{
+    /* border:0.3px solid silver; */
+    width:600px;
+    height:500px;
+    display:flex;
+    flex-direction: column;
+}
+
+.leftTopBar .photos .mainPhoto{
+    /* border:0.3px solid silver; */
+    display:flex;
+    width:600px;
+    height:350px;
+    justify-content: center;
+    align-items: center;
+}
+.leftTopBar .photos .mainPhoto img{
+    width:600px;
+    height:350px;
+}
+
+.leftTopBar .photos .restPhotos{
+    /* border:0.3px solid silver; */
+    display: flex;
+    width: 600px;
+    height: 150px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.leftTopBar .title2{
+    color:#0B107E;
+    font-size: 32px;
+}
+
+.leftTopBar .shortDescription{
+    font-size:24px;
+}
+
+.rightTopBar{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    width:555px;
+    height:355px;
+}
+
+.rightTopBar .vap-sellerBar{
+    width: 370px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+}
+.rightTopBar .sellerName{
+    color:#017805;
+    font-size:28px;
+}
+
+.rightTopBar .date-n-place{
+    display:flex;
+    width:370px;
+    height:80px;
+}
+
+.date-n-place{
+    display: flex;
+    width: 370px;
+    height: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-size:18px;
+}
+.viewAdPage .bottomBar{
+    display:flex;
+    flex-direction: column;
+    /* border:1px solid silver; */
+    width:1300px;
+    height:550px;
+    
+}
+.bottomBar .titleDescription{
+    color:#0B107E;
+    font-size:32px;
+    margin-left: 20px;
+}
+
+.bottomBar .allDescription{
+    /* border:1px solid green; */
+    width:1250px;
+    height:490px;
+    font-size:24px;
+    margin-left: 20px;
+}

@@ -1,0 +1,43 @@
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', Roboto, RampartOne
+    monospace;
+}
+
+@font-face {
+  font-family: 'RampartOne';
+  src: local('RampartOne'),
+    url('./fonts/RampartOne-Regular.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+    url('./fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+.font-rampart-one {
+  font-family: "RampartOne";
+}
+
+.font-roboto {
+  font-family: "Roboto";
+}
+
+.my-link{
+  text-decoration:none;
+}
+.my-button{
+  cursor:pointer;
+}

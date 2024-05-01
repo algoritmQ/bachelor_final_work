@@ -1,0 +1,16 @@
+.btnRedRect{
+    display: inline-block;
+    font-size:14px;
+    color:#E10050;
+    align-items: center;
+    padding: 3px;
+    gap: 10px;
+    background-color: white;
+    border-radius: 4px;
+    border:1px solid #E10050;
+    cursor:pointer;
+}
+.btnRedRect:hover{
+    border:1px solid #6de100;
+    color:#6de100;
+}

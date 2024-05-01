@@ -1,0 +1,11 @@
+.btnSendMsg{
+    width:50px;
+    height:50px;
+    display:flex;
+    background-color: #2196F3;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.btnSendMsg :hover{
+    border-radius:30px;
+}

@@ -1,0 +1,194 @@
+.additionAdPage{
+    display:flex;
+    min-height:600px;
+    width:1200px;
+    flex-direction: column;
+}
+
+.additionAdPage .title{
+    display:flex;
+    font-size:32px;
+    align-items: center;
+    padding-top:20px;
+    padding-bottom:20px;
+    justify-content: center;
+}
+
+.additionAdPage .addField{
+    height:1130px;
+    width:1170px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.addField .topBar{
+    display:flex;
+    flex-direction: row;
+    
+    width:1170px;
+    height:280px;
+    justify-content: flex-start
+}
+
+.addField .names{
+    display:flex;
+    flex-direction: column;
+   
+    display:flex;
+    height:280px;
+    width:300px;
+}
+.names .oneField{
+    display: flex;
+    
+    width: 290px;
+    height: 60px;
+    font-size: 26px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left:10px;
+}
+.names .bigField{
+    
+    width: 290px;
+    height: 100px;
+
+    display: flex;
+    font-size: 26px;
+    align-items: center;
+    padding-left:10px;
+}
+
+.fields .oneField2{
+    
+    width:380px;
+    height:60px;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.fields .bigField2{
+   
+    width:850px;
+    height:100px;
+    display: flex;
+    font-size: 32px;
+    align-items: center;
+    padding-left:10px;
+}
+
+.bigField2 .knopka{
+    
+    display:flex;
+    align-items: center;
+    width:250px;
+    height:80px;
+}
+.bigField2 .fieldPhotos{
+    
+    display: flex;
+    align-items: center;
+    width: 550px;
+    height: 80px;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.fieldPhotos .onePhoto{
+    width:80px;
+    height:80px;
+}
+.fieldPhotos .onePhoto img{
+    width:80px;
+    height:80px;
+}
+
+.addField .fields{
+    display:flex;
+    flex-direction: column;
+    
+    display:flex;
+    height:280px;
+    width:860px;
+}
+
+.addField .textAreas{
+    display:flex;
+    flex-direction: column;
+    
+    height:810px;
+    width:1170px;
+}
+
+.textAreas .shortDescription{
+    width:970px;
+    height:200px;
+    
+    display:flex;
+    gap:10px;
+    flex-direction: column;
+}
+
+.textAreas .shortDescription span{
+    font-size: 26px;
+    margin-left:10px;
+}
+.textAreas .shortDescription textarea{
+    font-size: 20px;
+    width:500px;
+    height:300px;
+    resize:none;
+}
+.textAreas .largeDescription{
+    width:1100px;
+    height:550px;
+    margin-top:10px;
+    display:flex;
+    gap:20px;
+    flex-direction: column;
+}
+.textAreas .largeDescription textarea{
+    font-size: 20px;
+    width:800px;
+    height:400px;
+    resize:none;
+}
+.textAreas .largeDescription span{
+    font-size: 26px;
+    margin-left:10px;
+}
+.topBar input{
+    width:380px;
+    height:35px;
+    
+    border-radius: 4px;
+    font-size:18px;
+    padding-left:3px;
+}
+#my-select{
+    width:380px;
+    height:35px;
+    border-radius: 4px;
+    font-size:18px;
+    
+}
+
+.topBar select{
+    width:380px;
+    height:35px;
+    border-radius: 4px;
+    font-size:18px;
+    padding-left:3px;
+}
+.knopka>input {
+    display: none;
+  }
+
+.deleteBtn{
+    padding-left:8px;
+    /* border:1px solid yellow; */
+    width:220px;
+    height: 50px;
+}

@@ -1,0 +1,22 @@
+.enterForm{
+    padding-top: 30px;
+    display: flex;
+    width: 440px;
+    height: 260px;
+    background-color: #F7F7F7;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap:20px;
+    border:1px solid green;
+}
+
+.enterForm .title{
+    font-size: 32px;
+}
+
+.enterForm input{
+    padding-left:20px;
+    width:316px;
+    height:40px;
+}

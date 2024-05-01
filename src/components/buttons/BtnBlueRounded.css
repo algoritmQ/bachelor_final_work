@@ -1,0 +1,15 @@
+.btnBlueRounded{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    background-color: #2196F3;
+    margin:0 10px 0 10px;
+    border-radius: 20px;
+    color:#FFFFFF;
+}
+.btnBlueRounded:hover{
+    background-color: rgba(19, 182, 27, 0.815);
+}

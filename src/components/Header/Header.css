@@ -1,0 +1,69 @@
+.Header{
+  display: flex;
+  /* border: 1px solid red; */
+  width: 1440px;
+  height: 83px;
+  background-color: #444444;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RightBarFrame{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0px;
+  box-sizing: border-box;
+  width: 353px;
+  height: 83px;
+  }
+
+.inactiveDiv{
+  position:absolute;
+  margin:auto;
+  top:0px;
+  left:0;
+  right:0;
+  z-index: 1;
+  background-color: #0000009c;
+  /* border:1px solid red; */
+  width:100%;
+  height:100%;
+  display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inactiveDiv .insideBlock{
+    display: flex;
+    /* border: 1px solid green; */
+    width: 500px;
+    min-height: 500px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px;
+}
+.inactiveDiv .closeForm{
+  display: flex;
+    /* border: 1px solid green; */
+    width: 500px;
+    min-height: 70px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /* cursor:pointer; */
+}
+.inactiveDiv .closeForm span{
+  color:rgba(255, 255, 255, 0.066);
+  font-size: 20px;
+  
+}
+.inactiveDiv .closeForm:hover span{
+  color:rgba(255, 255, 255, 0.289);
+  font-size: 30px;
+
+}

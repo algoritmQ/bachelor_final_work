@@ -1,0 +1,36 @@
+.avatar_n_Profile{
+    display: flex;
+    width: 274px;
+    height: 83px;
+    /*border: 1px solid red;*/
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.avatar{
+    display: flex;
+    /*border: 1px solid red;*/
+    width: 55px;
+    height: 63px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#l1, #l2{
+    color:white;
+    text-decoration:none;
+}
+#l1{
+    font-size:20px;
+}
+
+#l2{
+    font-size:16px;
+    color:rgba(255,255,255,0.7);
+    cursor:pointer;
+}
+#l2:hover{
+    color:rgba(245, 14, 14, 0.7);
+}
