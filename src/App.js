@@ -64,12 +64,12 @@ export const App = () => {
          <Route path = '/MainPage' element = {<MainPage city = {city} minPrice={minPrice} maxPrice={maxPrice} 
                         setminPrice = {setminPrice} setmaxPrice = {setmaxPrice} setCity ={setCity}
                         setInput = {setInput} input = {input} setClick = {setClick} click = {click}
+                        select={select} setSelect={setSelect}
                         />} 
           /> 
          <Route path = '/RegForm' element = {<RegForm/>} />
          <Route path = '/EnterForm' element = {<EnterForm/>} />
          <Route path = '/ViewAdPage/:id' element = {<ViewAdPage/>} />
-
          <Route path = '/AdditionAdPage' element = {<AdditionAdPage/>} />
          <Route path = '/ChangeAdPage/:id' element = {<ChangeAdPage/>} />
          <Route path = '/UserInfoPage' element = {<UserInfoPage/>} />

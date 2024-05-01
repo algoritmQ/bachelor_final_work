@@ -86,7 +86,7 @@ const SearchForm = (props) => {
     <form>
     <DivSearchForm>
         <span>Парамерты поиска</span>
-          <Select
+          <Select onChange={(e) => props.setSelect(e.value)}
             id="regSelect"
             placeholder= "Категория"
             options={arrCategories}

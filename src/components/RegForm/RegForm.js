@@ -33,7 +33,7 @@ function RegForm(props) {
       })
       .then(response => {
         // ТИПО ВСЁ ОК И МЫ Зарегались
-        alert('Пользователь создан!');
+        // alert('Пользователь создан!');
         props.setzReg(-1);
       })
       .catch(error => {

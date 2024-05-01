@@ -22,15 +22,15 @@ function MainPage(props) {
         const city_filter = props.city ? props.city : '';
         const minPrice_filter = props.minPrice ? props.minPrice : '';
         const maxPrice_filter = props.maxPrice ? props.maxPrice : '';
-        //await axiosInstance.get(`ads_depth/?title=${query}&city=${props.city}&min_p=${props.minPrice}&max_p=${props.maxPrice}`)
-        await axiosInstance.get(`ads_depth/?min_p=${minPrice_filter}&max_p=${maxPrice_filter}&city=${city_filter}&title=${query}`)
+        const select_filter = props.select ? props.select : '';
+        await axiosInstance.get(`ads_depth/?min_p=${minPrice_filter}&max_p=${maxPrice_filter}&city=${city_filter}&title=${query}&c_id=${select_filter}`)
         .then(response => {
           dispatch(setAds(response.data
             .filter(elem => elem.status === 'A')));
-            props.setInput('');
-            props.setminPrice('');
-            props.setmaxPrice('');
-            props.setCity('');
+              props.setInput('');
+              props.setminPrice('');
+              props.setmaxPrice('');
+              props.setCity('');
         });
       }
       fetchAds();

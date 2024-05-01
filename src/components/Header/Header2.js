@@ -30,7 +30,9 @@ function Header2(props) {
           <div onClick = {() => {
                               props.setClick(!props.click);
                               navigate('/MainPage');
-                              }} className='js-submitDiv' style = {{cursor:'pointer'}}><BtnBlueMainSearch className = "font-roboto" name ="Начать поиск"/></div>
+                              }} className='js-submitDiv' style = {{cursor:'pointer'}}>
+                                <BtnBlueMainSearch className = "font-roboto" name ="Начать поиск"/>
+                                </div>
         </div>
       </div>
     );
