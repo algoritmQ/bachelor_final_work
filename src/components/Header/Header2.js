@@ -1,4 +1,3 @@
-
 import HamburgerButton from '../buttons/HamburgerButton';
 import BtnBlueMainSearch from '../buttons/BtnBlueMainSearch';
 import './Header2.css';

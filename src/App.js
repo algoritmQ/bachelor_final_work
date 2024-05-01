@@ -61,11 +61,10 @@ export const App = () => {
       
       <div class = "mainContent">
         <Routes>
-         <Route path = '/MainPage' element = {<MainPage city = {city} minPrice={minPrice} maxPrice={maxPrice} 
-                        setminPrice = {setminPrice} setmaxPrice = {setmaxPrice} setCity ={setCity}
-                        setInput = {setInput} input = {input} setClick = {setClick} click = {click}
-                        select={select} setSelect={setSelect}
-                        />} 
+         <Route path = '/MainPage' element = {<MainPage city={city} minPrice={minPrice} maxPrice={maxPrice} 
+                        setminPrice={setminPrice} setmaxPrice={setmaxPrice} setCity={setCity}
+                        setInput={setInput} input={input} setClick={setClick} click={click}
+                        select={select} setSelect={setSelect} />} 
           /> 
          <Route path = '/RegForm' element = {<RegForm/>} />
          <Route path = '/EnterForm' element = {<EnterForm/>} />

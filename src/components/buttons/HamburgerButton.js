@@ -77,9 +77,14 @@ const Bar = styled.span`
 const HamburgerButton = (props) => {
   const[zInd, setzInd] = useState(-1);
   const dispatch = useDispatch();
+
+  function toggleVisibility() {
+    setzInd((-1)*zInd)
+  }
+
   return (
     <>
-      <div onClick={() => setzInd((-1)*zInd)}>
+      <div onClick={toggleVisibility}>
         <MenuButton>
           <Bar />
           <Bar />
@@ -88,8 +93,8 @@ const HamburgerButton = (props) => {
       </div>
       <SearchFormhere style = {{zIndex:zInd}}>
         <SearchForm
-          select = {props.select} setSelect = {props.setSelect} minPrice = {props.minPrice} setminPrice = {props.setminPrice}
-          setmaxPrice = {props.setmaxPrice} maxPrice = {props.maxPrice} city = {props.city} setCity = {props.setCity}
+          select={props.select} setSelect={props.setSelect} minPrice={props.minPrice} setminPrice={props.setminPrice}
+          setmaxPrice={props.setmaxPrice} maxPrice={props.maxPrice} city={props.city} setCity={props.setCity}
         />
       </SearchFormhere>
     </>
