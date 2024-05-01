@@ -62,8 +62,8 @@ function LargeAd(props) {
               </div>                 
           </div>
           <div className = "sellerBar">
-            <span className = "sellerName"><span>{props.user_id.first_name}!</span></span>
-            {/*{!!(props.user_id.username != user.username) && <div onClick={goToRoom}><Link><BtnBlcknWRect name = "Написать продавцу"/></Link></div>}*/}
+            <span className = "sellerName"><span>{props.user_id.first_name}</span></span>
+            {!!(props.user_id.username != user.username) && <div onClick={goToRoom}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
           </div>          
         </div>
           <div className = "category_ad">

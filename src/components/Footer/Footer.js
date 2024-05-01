@@ -5,7 +5,7 @@ function Footer(props) {
       <div class = "Footer">
         <div className="footer-text">
         <span>©Goods for people<br/></span>
-        <span>Bratuknin Danilin Sergeev, 2023</span>
+        <span>Bratuknin Danilin, 2024</span>
         </div>
       </div>
     );

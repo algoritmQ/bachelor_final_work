@@ -63,7 +63,7 @@ function ViewAdPage(props) {
                 <span className = "nameAd">{item?.price}, руб.</span>
                 <div className = "vap-sellerBar">
                     <span className = "sellerName">{item.user_id?.first_name}</span>
-                    {/*{!!(user.username!=item.user_id?.username) && <div onClick={goToRoom}><BtnBlue50Rect name = "Написать продавцу"/></div>}*/}
+                    {!!(user.username!=item.user_id?.username) && <div onClick={goToRoom}><BtnBlue50Rect name = "Оформить заказ"/></div>}
                 </div>
                 <div className = "date-n-place">
                     <span className = "rr">Город {item.user_id?.city}</span>
