@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SearchForm from '../SearchForm/SearchForm';
+import { useAppContext } from '../../context/AppContext';
 
 const SearchFormhere = styled.div`
   position:absolute;
@@ -76,7 +77,12 @@ const Bar = styled.span`
 
 const HamburgerButton = (props) => {
   const[zInd, setzInd] = useState(-1);
+  const { click } = useAppContext();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setzInd(-1);
+  }, [click]);
 
   function toggleVisibility() {
     setzInd((-1)*zInd)
