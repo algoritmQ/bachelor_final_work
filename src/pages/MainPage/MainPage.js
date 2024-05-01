@@ -11,34 +11,37 @@ import RegForm from '../../components/RegForm/RegForm';
 import EnterForm from '../../components/EnterForm/EnterForm';
 import axiosInstance from '../../api/api.js';
 
+import { useAppContext } from '../../context/AppContext';
+
 
 function MainPage(props) {
   const dispatch = useDispatch();
   const ads = useSelector(store => store.ads.ads);
+
+  const { setInput, input, click, select, setSelect, minPrice, setminPrice, maxPrice, setmaxPrice, city, setCity } = useAppContext();
  
   useEffect(() => {
       const fetchAds = async () => {
-        const query = props.input ? props.input : '';
-        const city_filter = props.city ? props.city : '';
-        const minPrice_filter = props.minPrice ? props.minPrice : '';
-        const maxPrice_filter = props.maxPrice ? props.maxPrice : '';
-        const select_filter = props.select ? props.select : '';
+        const query = input ? input : '';
+        const city_filter = city ? city : '';
+        const minPrice_filter = minPrice ? minPrice : '';
+        const maxPrice_filter = maxPrice ? maxPrice : '';
+        const select_filter = select ? select : '';
         await axiosInstance.get(`ads_depth/?min_p=${minPrice_filter}&max_p=${maxPrice_filter}&city=${city_filter}&title=${query}&c_id=${select_filter}`)
         .then(response => {
           dispatch(setAds(response.data
             .filter(elem => elem.status === 'A')));
-              props.setInput('');
-              props.setminPrice('');
-              props.setmaxPrice('');
-              props.setCity('');
-              props.setSelect('');
+              setInput('');
+              setminPrice('');
+              setmaxPrice('');
+              setCity('');
+              setSelect('');
         });
       }
       fetchAds();
       
-  }, [dispatch, props.click]);
+  }, [dispatch, click]);
 
-  const[user, setUser] = useState(false);
   return (
     <div class = "bodyWrapper"> 
       <div class = "mainContent">

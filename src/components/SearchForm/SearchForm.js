@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import axiosInstance from '../../api/api.js';
 import { setCategories } from '../../store/reducers/categoriesReducer';
+import { useAppContext } from '../../context/AppContext';
 
 const DivSearchForm = styled.div`
   display: flex;
@@ -65,10 +66,10 @@ const SearchForm = (props) => {
   const { categories } = useSelector(store => store.categories);
   const dispatch = useDispatch();
   let arrCategories = [];
+  const { select, setSelect, minPrice, setminPrice, maxPrice, setmaxPrice, city, setCity } = useAppContext();
 
   useEffect(() => {
     const fetchCategories = async () => {
-      //const arrCategories = [];
       await axiosInstance.get('categories/')
       .then(response => {
         dispatch(setCategories(response.data));
@@ -84,24 +85,22 @@ const SearchForm = (props) => {
 
   return (
     <form>
-    <DivSearchForm>
-        <span>Парамерты поиска</span>
-          <Select onChange={(e) => props.setSelect(e.value)}
-            id="regSelect"
-            placeholder= "Категория"
-            options={arrCategories}
-          />
-            <div className = "tsena">
-              <span style = {{fontSize: '16px', color:'rgba(0,0,0,0.9)'}}>Цена</span>
-            </div>
-            <div className = 'priceInputs'>
-              
-              <input value={props.minPrice} onChange={e => props.setminPrice(e.target.value)} className = 'lilInput minPriceInput' type='text' placeHolder = 'от'/>
-              <input value={props.maxPrice} onChange={e => props.setmaxPrice(e.target.value)} className = 'lilInput maxPriceInput' type='text' placeHolder = 'до'/>
-            </div>
-            <input value={props.city} onChange={e => props.setCity(e.target.value)} className = "searchForm-input cityInput" type='text' placeHolder = 'Город'/>
-        
-    </DivSearchForm>
+      <DivSearchForm>
+          <span>Парамерты поиска</span>
+            <Select onChange={(e) => setSelect(e.value)}
+              id="regSelect"
+              placeholder= "Категория"
+              options={arrCategories}
+            />
+              <div className = "tsena">
+                <span style = {{fontSize: '16px', color:'rgba(0,0,0,0.9)'}}>Цена</span>
+              </div>
+              <div className = 'priceInputs'>
+                <input value={minPrice} onChange={e => setminPrice(e.target.value)} className = 'lilInput minPriceInput' type='text' placeHolder = 'от'/>
+                <input value={maxPrice} onChange={e => setmaxPrice(e.target.value)} className = 'lilInput maxPriceInput' type='text' placeHolder = 'до'/>
+              </div>
+              <input value={city} onChange={e => setCity(e.target.value)} className = "searchForm-input cityInput" type='text' placeHolder = 'Город'/>
+      </DivSearchForm>
     </form>
   );
 };

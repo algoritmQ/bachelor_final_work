@@ -2,9 +2,12 @@ import HamburgerButton from '../buttons/HamburgerButton';
 import BtnBlueMainSearch from '../buttons/BtnBlueMainSearch';
 import './Header2.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context/AppContext'
 
 function Header2(props) {
   const navigate = useNavigate();
+
+  const { setInput, input, setClick, click } = useAppContext();
 
     return (
       <div class = "Header2">
@@ -20,14 +23,11 @@ function Header2(props) {
        
         <div className="middle">
           <div className="search-field">
-            <input value={props.input} onChange={e => props.setInput(e.target.value)} className="font-roboto js-mainSearch" placeholder='Поиск объявлений'/>
-            <HamburgerButton
-              select = {props.select} setSelect = {props.setSelect} minPrice = {props.minPrice} setminPrice = {props.setminPrice}
-              setmaxPrice = {props.setmaxPrice} maxPrice = {props.maxPrice} city = {props.city} setCity = {props.setCity}
-            />
+            <input value={input} onChange={e => setInput(e.target.value)} className="font-roboto js-mainSearch" placeholder='Поиск объявлений'/>
+            <HamburgerButton />
           </div>
           <div onClick = {() => {
-                              props.setClick(!props.click);
+                              setClick(!click);
                               navigate('/MainPage');
                               }} className='js-submitDiv' style = {{cursor:'pointer'}}>
                                 <BtnBlueMainSearch className = "font-roboto" name ="Начать поиск"/>

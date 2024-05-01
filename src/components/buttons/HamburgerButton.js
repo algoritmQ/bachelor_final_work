@@ -92,10 +92,7 @@ const HamburgerButton = (props) => {
         </MenuButton>
       </div>
       <SearchFormhere style = {{zIndex:zInd}}>
-        <SearchForm
-          select={props.select} setSelect={props.setSelect} minPrice={props.minPrice} setminPrice={props.setminPrice}
-          setmaxPrice={props.setmaxPrice} maxPrice={props.maxPrice} city={props.city} setCity={props.setCity}
-        />
+        <SearchForm />
       </SearchFormhere>
     </>
   );

@@ -23,16 +23,12 @@ import MainPage from './pages/MainPage/MainPage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import axiosInstance from './api/api';
 
+import { AppProvider } from './context/AppContext';
+
 
 export const App = () => {
   const dispatch = useDispatch();
   const [autorized, setAutorized] = useState(useSelector(store => store.user.autorized));
-  const [input, setInput] = useState('');
-  const [click, setClick] = useState(0);
-  const [select, setSelect] = useState('');
-  const [minPrice, setminPrice] = useState('');
-  const [maxPrice, setmaxPrice] = useState('');
-  const [city, setCity] = useState('');
 
   useEffect(() => {
     async function getMe() {
@@ -49,36 +45,32 @@ export const App = () => {
   }, [dispatch]); //, autorized
 
   return (
-    <div class = "bodyWrapper"> 
-      {autorized ? 
-        <HeaderReg autorized={autorized} setAutorized = {setAutorized}/> : 
-        <Header autorized={autorized} setAutorized = {setAutorized} />
-      }
-      <Header2 setInput = {setInput} input = {input} setClick = {setClick} click = {click}
-               select = {select} setSelect = {setSelect} minPrice = {minPrice} setminPrice = {setminPrice}
-               setmaxPrice = {setmaxPrice} city = {city} setCity = {setCity}
-      /> 
-      
-      <div class = "mainContent">
-        <Routes>
-         <Route path = '/MainPage' element = {<MainPage city={city} minPrice={minPrice} maxPrice={maxPrice} 
-                        setminPrice={setminPrice} setmaxPrice={setmaxPrice} setCity={setCity}
-                        setInput={setInput} input={input} setClick={setClick} click={click}
-                        select={select} setSelect={setSelect} />} 
-          /> 
-         <Route path = '/RegForm' element = {<RegForm/>} />
-         <Route path = '/EnterForm' element = {<EnterForm/>} />
-         <Route path = '/ViewAdPage/:id' element = {<ViewAdPage/>} />
-         <Route path = '/AdditionAdPage' element = {<AdditionAdPage/>} />
-         <Route path = '/ChangeAdPage/:id' element = {<ChangeAdPage/>} />
-         <Route path = '/UserInfoPage' element = {<UserInfoPage/>} />
-         <Route path = '/AnotherUserInfoPage/:id' element = {<AnotherUserInfoPage/>} />
-         
-        </Routes>
-              
+    <AppProvider>
+      <div class = "bodyWrapper"> 
+        {autorized ? 
+          <HeaderReg autorized={autorized} setAutorized = {setAutorized}/> : 
+          <Header autorized={autorized} setAutorized = {setAutorized} />
+        }
+        <Header2 /> 
+        
+        <div class = "mainContent">
+          <Routes>
+          <Route path = '/MainPage' element = {<MainPage />} 
+            /> 
+          <Route path = '/RegForm' element = {<RegForm/>} />
+          <Route path = '/EnterForm' element = {<EnterForm/>} />
+          <Route path = '/ViewAdPage/:id' element = {<ViewAdPage/>} />
+          <Route path = '/AdditionAdPage' element = {<AdditionAdPage/>} />
+          <Route path = '/ChangeAdPage/:id' element = {<ChangeAdPage/>} />
+          <Route path = '/UserInfoPage' element = {<UserInfoPage/>} />
+          <Route path = '/AnotherUserInfoPage/:id' element = {<AnotherUserInfoPage/>} />
+          
+          </Routes>
+                
+        </div>
+        <Footer/>
+        
       </div>
-      <Footer/>
-      
-    </div>
+    </AppProvider>
   );
 };
