@@ -4,8 +4,8 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [input, setInput] = useState('');
-  const [click, setClick] = useState(0);
-  const [select, setSelect] = useState('');
+  const [click, setClick] = useState(false);
+  const [select, setSelect] = useState(null);
   const [minPrice, setminPrice] = useState('');
   const [maxPrice, setmaxPrice] = useState('');
   const [city, setCity] = useState('');

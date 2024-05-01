@@ -35,7 +35,7 @@ function MainPage(props) {
               setminPrice('');
               setmaxPrice('');
               setCity('');
-              setSelect('');
+              setSelect(null);
         });
       }
       fetchAds();

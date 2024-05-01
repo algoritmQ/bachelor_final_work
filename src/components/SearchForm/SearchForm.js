@@ -87,10 +87,12 @@ const SearchForm = (props) => {
     <form>
       <DivSearchForm>
           <span>Парамерты поиска</span>
-            <Select onChange={(e) => setSelect(e.value)}
+            <Select 
+              onChange={(e) => setSelect(e.value)}
               id="regSelect"
               placeholder= "Категория"
               options={arrCategories}
+              value={select ? arrCategories[select - 1] : select}
             />
               <div className = "tsena">
                 <span style = {{fontSize: '16px', color:'rgba(0,0,0,0.9)'}}>Цена</span>
