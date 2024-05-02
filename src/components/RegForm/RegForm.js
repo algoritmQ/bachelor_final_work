@@ -5,13 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import { useState } from 'react';
 import axiosInstance from '../../api/api';
-
-const selectableOptions = [
-  { value: 'Москва', label: 'Москва' },
-  { value: 'Санкт-Петербург', label: 'Санкт-Петербург' },
-  { value: 'Воронеж', label: 'Воронеж' },
-  { value: 'Вологда', label: 'Вологда' }
-]
+import Spin from '../Spin/Spin';
 
 function RegForm(props) {
   const [login, setLogin] = useState('');
@@ -20,9 +14,10 @@ function RegForm(props) {
   const [password, setPassword] = useState('');
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const [city, setCity] = useState('');
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   async function createUser() {
+    setLoading(true);
     if (password === repeatedPassword) {
       await axiosInstance.post('users/', {
         'username': login,
@@ -43,10 +38,12 @@ function RegForm(props) {
     } else {
       // МЕГА КРУТАЯ ОБРАБОТКА ОШИБКИ НЕВЕРНОГО ПАРОЛЯ
     }
+    setLoading(false);
   }
 
   return (
     <>
+    {loading && <Spin />}
     <form>
     <div className="regForm" onClick={e => e.stopPropagation()} >
         <span className="title">Регистрация</span>
