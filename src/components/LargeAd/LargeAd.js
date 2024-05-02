@@ -2,7 +2,7 @@
 import './LargeAd.css';
 import '../.././index.css';
 import BtnBlcknWRect from '../buttons/BtnBlcknWRect'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosInstance from '../../api/api';
 import { addOrder } from '../../store/reducers/basketReducer';

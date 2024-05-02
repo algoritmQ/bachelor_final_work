@@ -8,14 +8,14 @@ const basketSlice = createSlice({
     name: 'basket',
     initialState,
     reducers: {
-        addOrder: (state, payload) => {
-            state.orders.push(payload);
+        addOrder: (state, action) => {
+            state.orders.push(action.payload);
         },
-        setOrders: (state, payload) => {
-            state.orders = payload;
+        setOrders: (state, action) => {
+            state.orders = action.payload;
         },
-        removeOrder: (state, payload) => {
-            state.orders = state.orders.filter(order => order.id !== payload.id);
+        removeOrder: (state, action) => {
+            state.orders = state.orders.filter(order => order.id !== action.payload.id);
         } 
     }
 });
