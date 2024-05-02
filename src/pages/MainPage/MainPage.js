@@ -43,8 +43,8 @@ function MainPage(props) {
   }, [dispatch, click]);
 
   return (
-    <div class = "bodyWrapper"> 
-      <div class = "mainContent">
+    <div className="bodyWrapper"> 
+      <div className="mainContent">
 
         {ads.map(ad => (
           <LargeAd key={ad.id} {...ad}/>

@@ -10,7 +10,7 @@ function Header2(props) {
   const { setInput, input, setClick, click } = useAppContext();
 
     return (
-      <div class = "Header2">
+      <div className="Header2">
         <div className="left">
           <Link to = "/MainPage" className = "my-link">
             <span className="logo">         

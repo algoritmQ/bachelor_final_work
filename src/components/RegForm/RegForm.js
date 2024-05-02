@@ -48,8 +48,8 @@ function RegForm(props) {
   return (
     <>
     <form>
-    <div class = "regForm" onClick={e => e.stopPropagation()} >
-        <span class = "title">Регистрация</span>
+    <div className="regForm" onClick={e => e.stopPropagation()} >
+        <span className="title">Регистрация</span>
           <input className = "font-roboto" placeholder='Логин' value={login} onChange={e => setLogin(e.target.value)}/>
           <input className = "font-roboto" placeholder='Имя' value={name} onChange={e => setName(e.target.value)}/>
           <input className = "font-roboto" placeholder='Фамилия' value={surname} onChange={e => setSurname(e.target.value)}/>

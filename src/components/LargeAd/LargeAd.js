@@ -5,7 +5,7 @@ import BtnBlcknWRect from '../buttons/BtnBlcknWRect'
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosInstance from '../../api/api';
-import { useEffect } from 'react';
+import { addOrder } from '../../store/reducers/basketReducer';
 
 function LargeAd(props) {
   const time = new Date(props.publication_date);
@@ -16,27 +16,14 @@ function LargeAd(props) {
   const minutes = time.getMinutes();
   const user = useSelector(store => store.user.user);
   const dispatch = useDispatch();
-  const ads = useSelector(store => store.ads.ads);
 
-  const navigate = useNavigate();
-
-  async function goToRoom() {
-    await axiosInstance.post('chats/', {
-      'user_1': user.id,
-      'user_2': props.user_id.id,
-    })
-      .then(response => {
-        navigate(`/ChatPage/${response.data}`);
-      })
-      .catch(error => console.error(error));
+  async function addToBusket() {
+    dispatch(addOrder(props));
+    // ЗАПРОС
   }
-
-  useEffect(() => {
-
-  }, [dispatch]);
   
   return (
-    <div class = "largeAd">
+    <div className="largeAd">
       <div className = "avatarBar">
         <div className = "avatarPhoto">
           <img className ="mImg" src = {props?.photo}/>
@@ -63,7 +50,7 @@ function LargeAd(props) {
           </div>
           <div className = "sellerBar">
             <span className = "sellerName"><span>{props.user_id.first_name}</span></span>
-            {!!(props.user_id.username != user.username) && <div onClick={goToRoom}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
+            {!!(props.user_id.username != user.username) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
           </div>          
         </div>
           <div className = "category_ad">

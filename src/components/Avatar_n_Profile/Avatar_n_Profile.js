@@ -9,7 +9,7 @@ function Avatar_n_Profile({autorized, setAutorized}) {
   const dispatch = useDispatch();
 
   return (
-    <div class = "avatar_n_Profile">
+    <div className="avatar_n_Profile">
       <div className = "avatar">
         
       </div>

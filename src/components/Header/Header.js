@@ -9,17 +9,17 @@ import EnterForm from '../EnterForm/EnterForm';
 import RegForm from '../RegForm/RegForm'
 
 function Header({autorized, setAutorized}) {
-  const[zEnter, setzEnter] = useState(-1);
-  const[zReg, setzReg] = useState(-1);
-
+  const [zEnter, setzEnter] = useState(-1);
+  const [zReg, setzReg] = useState(-1);
+  
   const dispatch = useDispatch();
   useEffect(() => {
   }, [dispatch, autorized]
   );
   return (
     <>
-    <div class = "Header">
-      <div className ='RightBarFrame'>        
+    <div className="Header">
+      <div className='RightBarFrame'>        
           <Link className="my-link">
             {/* <div onClick = {() => {setAutorized(true)}}> */}
             <div onClick={() => setzEnter(1)}>

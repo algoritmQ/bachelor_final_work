@@ -46,14 +46,14 @@ export const App = () => {
 
   return (
     <AppProvider>
-      <div class = "bodyWrapper"> 
+      <div className="bodyWrapper"> 
         {autorized ? 
           <HeaderReg autorized={autorized} setAutorized = {setAutorized}/> : 
           <Header autorized={autorized} setAutorized = {setAutorized} />
         }
         <Header2 /> 
         
-        <div class = "mainContent">
+        <div className="mainContent">
           <Routes>
           <Route path = '/MainPage' element = {<MainPage />} 
             /> 
