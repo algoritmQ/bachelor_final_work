@@ -7,11 +7,13 @@ import axiosInstance from '../../api/api';
 import './EnterForm.css';
 import '../.././index.css';
 import BtnBlue38Rect from '../buttons/BtnBlue38Rect'
+import Spin from '../Spin/Spin';
 
 
 function EnterForm(props) {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -20,6 +22,7 @@ function EnterForm(props) {
 
   async function processEnter() {
     let isSuccess = false;
+    setLoading(true);
 
     await axiosInstance.post('api/token/', {
       'username': login,
@@ -42,10 +45,12 @@ function EnterForm(props) {
       })
       .catch(error => console.error(error));
     }
+    setLoading(false);
   }
 
   return (
     <>
+      {loading && <Spin />}
       <form>
         <div className="enterForm" onClick={e => e.stopPropagation()}>
             <span className="title">Вход</span>

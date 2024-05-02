@@ -24,11 +24,13 @@ import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import axiosInstance from './api/api';
 
 import { AppProvider } from './context/AppContext';
+import Spin from './components/Spin/Spin';
 
 
 export const App = () => {
   const dispatch = useDispatch();
   const [autorized, setAutorized] = useState(useSelector(store => store.user.autorized));
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getMe() {
@@ -39,13 +41,18 @@ export const App = () => {
       })
       .catch(error => console.error(error));
     }
-      if (localStorage.getItem('access')) {
-        getMe();        
-      }
+
+    if (localStorage.getItem('access')) {
+      setLoading(true);
+      getMe();        
+      setLoading(false);
+    }
+      // ЗАПРОС ЗА КОРЗИНОЙ
   }, [dispatch]); //, autorized
 
   return (
     <AppProvider>
+      {loading && <Spin />}
       <div className="bodyWrapper"> 
         {autorized ? 
           <HeaderReg autorized={autorized} setAutorized = {setAutorized}/> : 
