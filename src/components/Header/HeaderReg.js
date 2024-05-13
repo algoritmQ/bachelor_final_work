@@ -11,14 +11,15 @@ import { Link } from 'react-router-dom';
 function HeaderReg({autorized, setAutorized}) {
   const dispatch = useDispatch();
   const { orders } = useSelector(store => store.basket);
+  console.log(orders);
 
   useEffect(() => {
   }, [dispatch, autorized]
   );
   return (
     <div className="Header">
-        <div className = 'rightBar'>
-            <Link to = "/DialogsPage" className = "my-link" style={{color: 'white'}}><span id = "rr">{`Заказы ${orders.length === 0 ? '' : orders.length }`} </span></Link>
+        <div className = 'rightBar'>           
+            <Link to = "/OrdersPage" className = "my-link" style={{color: 'white'}}><span id = "rr">{`Заказы ${orders.length === 0 ? '' : orders.length }`} </span></Link>
             <Link to = "/UserInfoPage" className = "my-link" style={{color: 'white'}}><span id = "rr2">Мои объявления</span></Link>
             <Link to = "/AdditionAdPage" className = "my-link" style={{color: 'white'}}><BtnBlue50Rect className = "font-roboto" name="Продать что-нибудь"/></Link>
         </div> 

@@ -29,7 +29,7 @@ function LargeAd(props) {
           <img className ="mImg" src = {props?.photo}/>
         </div>
         <div className = "bottomBar">
-            <span>город {props.user_id.city}</span>
+            <span>город {props.user_id.address.city}</span>
             <span> Выложено <span className = "dateTime">
               {day +'.'+ month + "." + year + " " + hours + ":" + minutes}
               </span></span>
@@ -49,12 +49,12 @@ function LargeAd(props) {
               </div>                 
           </div>
           <div className = "sellerBar">
-            <span className = "sellerName"><span>{props.user_id.first_name}</span></span>
-            {!!(props.user_id.username != user.username) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
+            <span className = "sellerName"><span>{props.user_id.full_name}</span></span>
+            {!!(props.user_id.id != user.id) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
           </div>          
         </div>
           <div className = "category_ad">
-            {props.category.title}
+            {props.category_id.name}
           </div> 
         <div className = "generalDescription">
           {props.full_description}

@@ -16,11 +16,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    /*border: 1px solid red;*/
 }
 
 .rightBar{
     display: flex;
-    width: 536px;
+    width: 750px;
     height: 83px;
     /*border: 1px solid red;*/
     flex-direction: row;

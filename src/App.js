@@ -17,8 +17,9 @@ import LilAd from './components/LilAd/LilAd';
 import ViewAdPage from './pages/ViewAdPage/ViewAdPage';
 import AdditionAdPage from './pages/AdditionAdPage/AdditionAdPage';
 import ChangeAdPage from './pages/AdditionAdPage/ChangeAdPage';
+import OrdersPage from './pages/OrdersPage/OrdersPage';
 import UserInfoPage from './pages/UserInfoPage/UserInfoPage';
-import AnotherUserInfoPage from './pages/UserInfoPage/AnotherUserInfoPage';
+import AnotherUserInfoPage from './pages/OrdersPage/OrdersPage';
 import MainPage from './pages/MainPage/MainPage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import axiosInstance from './api/api';
@@ -62,15 +63,16 @@ export const App = () => {
         
         <div className="mainContent">
           <Routes>
-          <Route path = '/MainPage' element = {<MainPage />} 
-            /> 
-          <Route path = '/RegForm' element = {<RegForm/>} />
-          <Route path = '/EnterForm' element = {<EnterForm/>} />
-          <Route path = '/ViewAdPage/:id' element = {<ViewAdPage/>} />
-          <Route path = '/AdditionAdPage' element = {<AdditionAdPage/>} />
-          <Route path = '/ChangeAdPage/:id' element = {<ChangeAdPage/>} />
-          <Route path = '/UserInfoPage' element = {<UserInfoPage/>} />
-          <Route path = '/AnotherUserInfoPage/:id' element = {<AnotherUserInfoPage/>} />
+            <Route path = '/MainPage' element = {<MainPage />} 
+              /> 
+            <Route path = '/RegForm' element = {<RegForm/>} />
+            <Route path = '/EnterForm' element = {<EnterForm/>} />
+            <Route path = '/ViewAdPage/:id' element = {<ViewAdPage/>} />
+            <Route path = '/AdditionAdPage' element = {<AdditionAdPage/>} />
+            <Route path = '/ChangeAdPage/:id' element = {<ChangeAdPage/>} />
+            <Route path = '/UserInfoPage' element = {<UserInfoPage/>} />
+            <Route path = '/OrdersPage' element = {<OrdersPage/>} />
+            <Route path = '/AnotherUserInfoPage/:id' element = {<AnotherUserInfoPage/>} />
           
           </Routes>
                 
