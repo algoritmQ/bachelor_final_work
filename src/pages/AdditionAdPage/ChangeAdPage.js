@@ -55,7 +55,7 @@ function ChangeAdPage(props) {
     //   'short_description': shortDescription,
     //   'full_description': fullDescription,
     // })
-    await axiosInstance.put(`ads/${adsId}/`, formData)
+    await axiosInstance.patch(`ads/${adsId}/`, formData)
     .then(response => console.log(response))
     .then(navigate("/UserInfoPage"))
     .catch(error => console.error);

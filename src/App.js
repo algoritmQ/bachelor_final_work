@@ -27,7 +27,6 @@ import axiosInstance from './api/api';
 import { AppProvider } from './context/AppContext';
 import Spin from './components/Spin/Spin';
 
-
 export const App = () => {
   const dispatch = useDispatch();
   const [autorized, setAutorized] = useState(useSelector(store => store.user.autorized));
@@ -35,9 +34,9 @@ export const App = () => {
 
   useEffect(() => {
     async function getMe() {
-      await axiosInstance.get('api/whoami/')
+      await axiosInstance.get('/users/me/')
       .then(response => {
-        dispatch(setUser(response.data.data));
+        dispatch(setUser(response.data));
         setAutorized(true);
       })
       .catch(error => console.error(error));
@@ -63,8 +62,7 @@ export const App = () => {
         
         <div className="mainContent">
           <Routes>
-            <Route path = '/MainPage' element = {<MainPage />} 
-              /> 
+            <Route path = '/MainPage' element = {<MainPage />} /> 
             <Route path = '/RegForm' element = {<RegForm/>} />
             <Route path = '/EnterForm' element = {<EnterForm/>} />
             <Route path = '/ViewAdPage/:id' element = {<ViewAdPage/>} />

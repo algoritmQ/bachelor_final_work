@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 function HeaderReg({autorized, setAutorized}) {
   const dispatch = useDispatch();
   const { orders } = useSelector(store => store.basket);
-  console.log(orders);
 
   useEffect(() => {
   }, [dispatch, autorized]

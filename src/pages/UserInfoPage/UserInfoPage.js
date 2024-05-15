@@ -30,8 +30,8 @@ function UserInfoPage(props) {
         async function getMyAds() {
             await axiosInstance.get(`ads/?user_id=${user.id}`)
             .then(response => {  
-                const filteredActiveAds = response.data.filter(element => element.status === 'A');
-                const filteredSoldAds = response.data.filter(element => element.status === 'S');
+                const filteredActiveAds = response.data.filter(element => element.status.name === 'Active');
+                const filteredSoldAds = response.data.filter(element => element.status.name === 'Sold');
                 
                 dispatch(setActiveAds(filteredActiveAds));
                 dispatch(setSoldAds(filteredSoldAds));            

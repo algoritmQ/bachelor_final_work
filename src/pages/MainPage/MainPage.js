@@ -27,8 +27,7 @@ function MainPage(props) {
         const minPrice_filter = minPrice ? minPrice : '';
         const maxPrice_filter = maxPrice ? maxPrice : '';
         const select_filter = select ? select : '';
-        // await axiosInstance.get(`ads/?min_p=${minPrice_filter}&max_p=${maxPrice_filter}&city=${city_filter}&title=${query}&category_id=${select_filter}`)
-        await axiosInstance.get(`ads/`)
+        await axiosInstance.get(`ads/?min_p=${minPrice_filter}&max_p=${maxPrice_filter}&city=${city_filter}&search=${query}&category=${select_filter}`)
         .then(response => {
           dispatch(setAds(response.data
             .filter(elem => elem.status.name === 'Active')));

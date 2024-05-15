@@ -24,12 +24,12 @@ function EnterForm(props) {
     let isSuccess = false;
     setLoading(true);
 
-    await axiosInstance.post('api/token/', {
+    await axiosInstance.post('auth/jwt/create/', {
       'username': login,
       'password': password,
     })
     .then(response => {
-      dispatch(setAuth(response.data));
+      dispatch(setAuth(response.data.access));
       isSuccess = true;
     })
     .catch(error => {
@@ -37,9 +37,9 @@ function EnterForm(props) {
     });
 
     if (isSuccess) {
-      await axiosInstance.get(`/users/?username=${login}`)
+      await axiosInstance.get(`/users/me/`)
       .then(response => {
-        dispatch(setUser(response.data[0]));
+        dispatch(setUser(response.data));
         props.setzEnter(-1);
         props.setAutorized(true);
       })

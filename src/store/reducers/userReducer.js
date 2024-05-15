@@ -8,7 +8,7 @@ const userSlice = createSlice({
     reducers: {
     setAuth: (state, {payload}) => {
         state.autorized = true;
-        localStorage.setItem('access', payload.access);
+        localStorage.setItem('access', payload);
     },
     setUser: (state, {payload}) => {
         state.autorized = true;

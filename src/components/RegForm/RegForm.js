@@ -19,7 +19,7 @@ function RegForm(props) {
   async function createUser() {
     setLoading(true);
     if (password === repeatedPassword) {
-      await axiosInstance.post('users/', {
+      await axiosInstance.post('users/reg/', {
         'username': login,
         'first_name': name,
         'last_name': surname,

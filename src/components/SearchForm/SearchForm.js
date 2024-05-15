@@ -81,7 +81,7 @@ const SearchForm = (props) => {
     const cat = {value: v, label: l};
     arrCategories.push(cat);
   }
-  categories.forEach(element => appendCat(element.id, element.name)); 
+  categories.forEach(element => appendCat(element.id, element.title)); 
 
   return (
     <form>

@@ -16,7 +16,7 @@ function ViewAdPage() {
 
     useEffect(() => {
         const fetchItem = async () => {
-            await axiosInstance.get(`ads_depth/${itemId}/`)
+            await axiosInstance.get(`ads/${itemId}/`)
             .then(response => {
                 dispatch(setItem(response.data));
             });
