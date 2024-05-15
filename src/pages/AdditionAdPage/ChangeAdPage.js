@@ -15,11 +15,12 @@ import { setItem } from '../../store/reducers/itemReducer.js';
 
 
 function ChangeAdPage(props) {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const adsId = useParams().id;
     const { item } = useSelector(store => store.item);
     const navigate = useNavigate();
     let arrCategories = []; 
+    let statusName = 0;
     const { categories } = useSelector(store => store.categories);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -27,7 +28,7 @@ function ChangeAdPage(props) {
     const [fullDescription, setFullDescription] = useState('');
     const [category, setCategory] = useState('');
     const [image, setImage] = useState(null);
-    
+    const [status, setStatus] = useState('');
     
     function appendCat(v, l){ 
       const cat = {value: v, label: l};
@@ -37,20 +38,17 @@ function ChangeAdPage(props) {
     
     async function updateItem() {
       const categoryId = arrCategories.findIndex(element => element.label === category) + 1;
-
       const formData = new FormData();
       formData.append('title', name);
       formData.append('category', categoryId);
       formData.append('price', price);
       formData.append('short_description', shortDescription);
       formData.append('full_description', fullDescription);
-      //formData.append('photo', image);
-
-
+      formData.append('status', status);//статус
+      //formData.append('photo', image)
     //   await axiosInstance.put(`ads/${adsId}/`, {
     //   'title': name,
-    //   'category': categoryId,
-      
+    //   'category': categoryId,  
     //   'price': price,
     //   'short_description': shortDescription,
     //   'full_description': fullDescription,
@@ -60,6 +58,52 @@ function ChangeAdPage(props) {
     .then(navigate("/UserInfoPage"))
     .catch(error => console.error);
   }
+  async function soldItem() {
+    const categoryId = arrCategories.findIndex(element => element.label === category) + 1;
+    const formData = new FormData();
+    formData.append('title', name);
+    formData.append('category', categoryId);
+    formData.append('price', price);
+    formData.append('short_description', shortDescription);
+    formData.append('full_description', fullDescription);
+    formData.append('status', 2);//статус
+    //formData.append('photo', image)
+  //   await axiosInstance.put(`ads/${adsId}/`, {
+  //   'title': name,
+  //   'category': categoryId,  
+  //   'price': price,
+  //   'short_description': shortDescription,
+  //   'full_description': fullDescription,
+  // })
+  await axiosInstance.patch(`ads/${adsId}/`, formData)
+  .then(response => console.log(response))
+  .then(navigate("/UserInfoPage"))
+  .catch(error => console.error);
+}
+
+async function activeItem() {
+  const categoryId = arrCategories.findIndex(element => element.label === category) + 1;
+  const formData = new FormData();
+  formData.append('title', name);
+  formData.append('category', categoryId);
+  formData.append('price', price);
+  formData.append('short_description', shortDescription);
+  formData.append('full_description', fullDescription);
+  formData.append('status', 1);//статус
+  //formData.append('photo', image)
+//   await axiosInstance.put(`ads/${adsId}/`, {
+//   'title': name,
+//   'category': categoryId,  
+//   'price': price,
+//   'short_description': shortDescription,
+//   'full_description': fullDescription,
+// })
+await axiosInstance.patch(`ads/${adsId}/`, formData)
+.then(response => console.log(response))
+.then(navigate("/UserInfoPage"))
+.catch(error => console.error);
+}
+
     async function deleteItem() {
       await axiosInstance.delete(`ads/${adsId}/`, {    })
     .then(response => console.log(response))
@@ -73,21 +117,35 @@ function ChangeAdPage(props) {
         dispatch(setCategories(response.data));
       });
     }
-
+    const fetchStatuses = async () => {
+      await axiosInstance.get('statuses/')
+      .then(response => {
+        dispatch(setStatus(response.data));
+      });
+    }
     const fetchItemById = async (adId) => {
       await axiosInstance.get(`ads/${adId}/`)
         .then(response => {
           dispatch(setItem(response.data));
+          
           setName(response.data.title);
           setPrice(response.data.price);
           setShortDescription(response.data.short_description);
           setFullDescription(response.data.full_description);
-          setCategory(response.data.category);
-          setImage(response.data.photo)
+          console.log(response.data.category.id);
+          setCategory(response.data.category);         
+          setImage(response.data.photo);
+          setStatus(response.data.status);
+          statusName = response.data.status;
+          console.log('status - ', statusName);
+          console.log(response.data.title);
+          //status = response.data.status
+          //alert(response.data.status.name);
+          //statusItem
         })
         .catch(error => console.error(error));
     }
-
+    fetchStatuses();
     fetchCategories();
     fetchItemById(adsId);
   }, [dispatch]);
@@ -105,17 +163,17 @@ function ChangeAdPage(props) {
               <div className = "bigField">Фотографии</div>
             </div>
             <div className = "fields">
-              <div className = "oneField2">
+              <div className = "oneField2">               
                 <Select id = "my-select"
                   className="input-cont"
-                  placeholder= {arrCategories[category - 1]?.label}
+                  //placeholder= {arrCategories[category - 1]?.label}
+                  placeholder= {category.title}
                   options={arrCategories}
-                  //value={category}
-                  label = {category}
+                  value={category.title}
+                  label = {category.title}
                   //selected = {category}
                   onChange={e => setCategory(e.label)}   
-                />
-
+                />               
               </div>
               <div className = "oneField2">
                 <input placeholder = "name" value={name} onChange={e => setName(e.target.value)}/>
@@ -159,11 +217,14 @@ function ChangeAdPage(props) {
               <span>Подробное описание</span>
               <textarea value={fullDescription} onChange={e => setFullDescription(e.target.value)}></textarea>     
               <div onClick={updateItem}><BtnBlue50Rect name = "Обновить объявление" widd = "210px"/></div>
-              <div onClick={deleteItem} className = "deleteBtn"><BtnRedRect name = "Снять с публикации" widd = "140px"/></div>     
-            </div>
-            
+              {/*<div onClick={deleteItem} className = "deleteBtn"><BtnRedRect name = "Снять с публикации" widd = "140px"/></div>
+              */}
+              {/*<div onClick={soldItem} className = "deleteBtn"><BtnRedRect name = "Снять с публикации" widd = "140px"/></div>*/}
+              {!!(status == 1) && <div onClick={soldItem} className = "deleteBtn"><BtnRedRect name = "Снять с публикации" widd = "140px"/></div>} 
+              {!!(status == 2) && <div onClick={activeItem} className = "deleteBtn"><BtnRedRect name = "Опубликовать" widd = "100px"/></div>}
+              
+            </div>           
           </div>
-          
         </div>
         </form>
       </div>
