@@ -72,12 +72,12 @@ function AnotherUserInfoPage(props) {
                 <div className = "field-right-ads">
                     {!!(status == 'status-active') && <div className = "field-right-ads-active">
                         {!!activeAds && activeAds.map(ad => (
-                            <LilAd key={ad.id} {...ad}/>
+                            <LilAd flag = "AnotherUser" key={ad.id} {...ad}/>
                         ))}
                     </div>}
                     {!!(status == 'status-outpubl') && <div className = "field-right-ads-out-publ">
                         {!!soldAds && soldAds.map(ad => (
-                            <LilAd key={ad.id} {...ad}/>
+                            <LilAd flag = "AnotherUser" key={ad.id} {...ad}/>
                         ))}
                     </div>}                   
                 </div>

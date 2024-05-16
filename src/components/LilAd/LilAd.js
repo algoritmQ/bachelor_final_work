@@ -16,7 +16,7 @@ function LilAd(props) {
         <span className = "priceAd" style = {{fontSize:'14px'}}>{props.price}, руб.</span>
         <span className = "addressAd" style = {{fontSize:'12px', color:'rgba(0,0,0,0.5)'}}>{props.city}</span>
         <span className = "timeAd" style = {{fontSize:'12px', color:'rgba(0,0,0,0.5)'}}>{day +'.'+ month + "." + year}</span>
-        <Link to = {`/ChangeAdPage/${props.id}`}><BtnBlcknWRect name ="Редактировать"/></Link>
+        {!!(props.flag == "User") &&<Link to = {`/ChangeAdPage/${props.id}`}><BtnBlcknWRect name ="Редактировать"/></Link>}
       </div>
     );
   }

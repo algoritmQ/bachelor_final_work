@@ -10,7 +10,7 @@
 }
 
 .avatarField{
-    border:1px solid silver;
+    /*border:1px solid silver;*/
     display: flex;
     width: 225px;
     height: 150px;

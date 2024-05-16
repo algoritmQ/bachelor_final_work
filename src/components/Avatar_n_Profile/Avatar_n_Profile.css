@@ -25,6 +25,15 @@
 #l1{
     font-size:20px;
 }
+/*
+#l1:hover{
+    color:rgba(245, 14, 14, 0.7);
+}
+*/
+#LinkName:hover{
+    color:rgba(245, 14, 14, 0.7);
+    background:rgba(245, 14, 14, 0.7);
+}
 
 #l2{
     font-size:16px;
