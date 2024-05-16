@@ -29,7 +29,7 @@ function UserInfoPage(props) {
     useEffect(() => {
         async function getMyAds() {
             await axiosInstance.get(`ads/?user_id=${user.id}`)
-            .then(response => {  
+            .then(response => {
                 const filteredActiveAds = response.data.filter(element => element.status.name === 'Active');
                 const filteredSoldAds = response.data.filter(element => element.status.name === 'Sold');
                 
@@ -38,10 +38,7 @@ function UserInfoPage(props) {
             })
             .catch(error => console.error(error));
         }
-
         getMyAds();
-
-
     }, [dispatch]);
     
   return (

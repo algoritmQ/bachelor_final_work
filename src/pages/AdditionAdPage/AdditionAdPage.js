@@ -66,7 +66,9 @@ function AdditionAdPage(props) {
     formData.append('price', price);
     formData.append('short_description', shortDescription);
     formData.append('full_description', fullDescription);
-    formData.append('photo', selectedImage);
+    if (selectedImage) {
+      formData.append('photo', selectedImage);
+    }
 
     await axiosInstance.post('ads/', formData)
       .then(response => console.log(response))

@@ -1,8 +1,6 @@
 import './RegForm.css';
 import '../.././index.css';
-import BtnBlue38Rect from '../buttons/BtnBlue38Rect'
-import { Link, useNavigate } from 'react-router-dom';
-import Select from 'react-select';
+import BtnBlue38Rect from '../buttons/BtnBlue38Rect';
 import { useState } from 'react';
 import axiosInstance from '../../api/api';
 import Spin from '../Spin/Spin';
@@ -45,7 +43,7 @@ function RegForm(props) {
     <>
     {loading && <Spin />}
     <form>
-    <div className="regForm" onClick={e => e.stopPropagation()} >
+      <div className="regForm" onClick={e => e.stopPropagation()} >
         <span className="title">Регистрация</span>
           <input className = "font-roboto" placeholder='Логин' value={login} onChange={e => setLogin(e.target.value)}/>
           <input className = "font-roboto" placeholder='Имя' value={name} onChange={e => setName(e.target.value)}/>
@@ -53,10 +51,8 @@ function RegForm(props) {
           <input className = "font-roboto" placeholder='Пароль' type="password" value={password} onChange={e => setPassword(e.target.value)}/>
           <input className = "font-roboto" placeholder='Повторите пароль' type="password" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
           <input className = "font-roboto" placeholder='Город' value={city} onChange={e => setCity(e.target.value)}/>
-          {/* <Link className="my-link"> */}
-            <div onClick={createUser}><BtnBlue38Rect name = "Зарегистрироваться"/></div>
-            {/* </Link> */}
-    </div>
+          <div onClick={createUser}><BtnBlue38Rect name = "Зарегистрироваться"/></div>
+      </div>
     </form>
     </>
   );

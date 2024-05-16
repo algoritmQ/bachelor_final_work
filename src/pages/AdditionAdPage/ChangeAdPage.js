@@ -29,6 +29,7 @@ function ChangeAdPage(props) {
     const [category, setCategory] = useState('');
     const [image, setImage] = useState(null);
     const [status, setStatus] = useState('');
+    const [photo, setPhoto] = useState(null);
     
     function appendCat(v, l){ 
       const cat = {value: v, label: l};
@@ -44,7 +45,10 @@ function ChangeAdPage(props) {
       formData.append('price', price);
       formData.append('short_description', shortDescription);
       formData.append('full_description', fullDescription);
-      formData.append('status', status);//статус
+      formData.append('status', status);
+      if (photo) {
+        formData.append('photo', photo);
+      }
       //formData.append('photo', image)
     //   await axiosInstance.put(`ads/${adsId}/`, {
     //   'title': name,
@@ -54,7 +58,7 @@ function ChangeAdPage(props) {
     //   'full_description': fullDescription,
     // })
     await axiosInstance.patch(`ads/${adsId}/`, formData)
-    .then(response => console.log(response))
+    // .then(response => console.log(response))
     .then(navigate("/UserInfoPage"))
     .catch(error => console.error);
   }
@@ -76,7 +80,7 @@ function ChangeAdPage(props) {
   //   'full_description': fullDescription,
   // })
   await axiosInstance.patch(`ads/${adsId}/`, formData)
-  .then(response => console.log(response))
+  // .then(response => console.log(response))
   .then(navigate("/UserInfoPage"))
   .catch(error => console.error);
 }
@@ -98,15 +102,15 @@ async function activeItem() {
 //   'short_description': shortDescription,
 //   'full_description': fullDescription,
 // })
-await axiosInstance.patch(`ads/${adsId}/`, formData)
-.then(response => console.log(response))
-.then(navigate("/UserInfoPage"))
-.catch(error => console.error);
+  await axiosInstance.patch(`ads/${adsId}/`, formData)
+  // .then(response => console.log(response))
+  .then(navigate("/UserInfoPage"))
+  .catch(error => console.error);
 }
 
     async function deleteItem() {
       await axiosInstance.delete(`ads/${adsId}/`, {    })
-    .then(response => console.log(response))
+    // .then(response => console.log(response))
     .then(navigate("/UserInfoPage"))
     .catch(error => console.error);
   }
@@ -132,13 +136,10 @@ await axiosInstance.patch(`ads/${adsId}/`, formData)
           setPrice(response.data.price);
           setShortDescription(response.data.short_description);
           setFullDescription(response.data.full_description);
-          console.log(response.data.category.id);
           setCategory(response.data.category);         
           setImage(response.data.photo);
           setStatus(response.data.status);
           statusName = response.data.status;
-          console.log('status - ', statusName);
-          console.log(response.data.title);
           //status = response.data.status
           //alert(response.data.status.name);
           //statusItem
@@ -152,7 +153,7 @@ await axiosInstance.patch(`ads/${adsId}/`, formData)
   
   return (
       <div class = "additionAdPage">
-        <form>
+        <form encType='multipart/form-data'>
         <div className = "title">Редактирование объявления</div>
         <div className = "addField">
           <div className = "topBar">
@@ -190,6 +191,7 @@ await axiosInstance.patch(`ads/${adsId}/`, formData)
                     name = "addImage"
                     onChange={e => {
                       const file = e.target.files[0];
+                      setPhoto(file);
                       const reader = new FileReader();
                       reader.onload = () => {
                         setImage(reader.result);
