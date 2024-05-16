@@ -38,23 +38,19 @@
     justify-content: space-around;
 
 }
-.profile-rightBar-fields-names{
+.profile-rightBar-fields-names, .profile-rightBar-fields-inputs{
     margin-top:20px;
     display: flex;
-    gap: 30px;
+    gap: 25px;
     flex-direction: column;
     justify-content: flex-start;
 }
 .profile-rightBar-fields-names span{
     font-size:20px;
 }
-.profile-rightBar-fields-inputs{
-    margin-top:20px;
-    display: flex;
-    gap: 30px;
-    flex-direction: column;
-    justify-content: flex-start;
-}
+ .profile-rightBar-fields-inputs{
+    gap: 26px; 
+} 
 .profile-rightBar-fields-inputs input{
     width:280px;
     height:20px;

@@ -19,13 +19,15 @@ function EditProfilePage(props) {
                   <span>Фамилия</span>
                   <span>Пароль</span>
                   <span>Город</span>
+                  <span>Телефон</span>
                 </div>
                 <div className = "profile-rightBar-fields-inputs">
-                  <input />
-                  <input />
-                  <input />
-                  <input />
-                  <input />
+                  <input placeholder = "username" />
+                  <input placeholder = "first_name"/>
+                  <input placeholder = "last_name"/>
+                  <input placeholder = "Новый пароль"/>
+                  <input placeholder = "city"/>
+                  <input placeholder = "phone_number"/>
                 </div>
             </div>
             <div className = "profile-rightBar-bottom">
