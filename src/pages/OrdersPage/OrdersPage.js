@@ -4,7 +4,7 @@ import AboutProfile from '../../components/AboutProfile/AboutProfile';
 import LilAd from '../../components/LilAd/LilAd';
 import { Link } from 'react-router-dom';
 import { setActiveAds, resetActiveAds, setSoldAds, resetSoldAds } from '../../store/reducers/adsReducer';
-
+import { setActiveOrders, setSoldOrders } from '../../store/reducers/basketReducer';
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosInstance from '../../api/api';
@@ -12,9 +12,10 @@ import axiosInstance from '../../api/api';
 function OrdersPage(props) {
     const [status, setStatus] = useState('status-active');
     const user = useSelector(store => store.user.user);
+    const orders = useSelector(store => store.basket.orders);
     const dispatch = useDispatch();
-    const activeAds = useSelector(store => store.ads.activeAds);
-    const soldAds = useSelector(store => store.ads.soldAds);
+    const activeOrders = useSelector(store => store.basket.activeOrders);
+    const soldOrders = useSelector(store => store.basket.soldOrders);
 
     const handleStatus = () => {
         status === 'status-active' ? setStatus('status-outpubl') : setStatus('status-active');
@@ -27,21 +28,15 @@ function OrdersPage(props) {
     }
 
     useEffect(() => {
-        async function getMyAds() {
-            await axiosInstance.get(`ads/?user_id=${user.id}`)
+        async function getMyOrders() {
+            await axiosInstance.get(`orders/?buyer=${user.id}`)
             .then(response => {  
-                const filteredActiveAds = response.data.filter(element => element.status === 'A');
-                const filteredSoldAds = response.data.filter(element => element.status === 'S');
-                
-                dispatch(setActiveAds(filteredActiveAds));
-                dispatch(setSoldAds(filteredSoldAds));            
+                dispatch(setActiveOrders(response.data));           
             })
             .catch(error => console.error(error));
         }
 
-        getMyAds();
-
-
+        getMyOrders();
     }, [dispatch]);
     
   return (
@@ -51,7 +46,7 @@ function OrdersPage(props) {
         </div>
         <div className = "userInfoPage-field">
             <div className = "field-left">
-                <AboutProfile/>
+                <AboutProfile first_name={user.first_name} last_name={user.last_name} city={user.city}/>
             </div>
             <div className = "field-right">
                 <div className = "field-right-title">
@@ -66,13 +61,13 @@ function OrdersPage(props) {
                 </div>
                 <div className = "field-right-ads">
                     {!!(status == 'status-active') && <div className = "field-right-ads-active">
-                        {!!activeAds && activeAds.map(ad => (
-                            <LilAd key={ad.id} {...ad}/>
+                        {!!activeOrders && activeOrders.map(order => (
+                            <LilAd key={order.id} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
                         ))}
                     </div>}
                     {!!(status == 'status-outpubl') && <div className = "field-right-ads-out-publ">
-                        {!!soldAds && soldAds.map(ad => (
-                            <LilAd key={ad.id} {...ad}/>
+                        {!!soldOrders && soldOrders.map(order => (
+                            <LilAd key={order.id} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
                         ))}
                     </div>}                   
                 </div>

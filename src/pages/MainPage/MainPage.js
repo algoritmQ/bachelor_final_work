@@ -10,13 +10,13 @@ import '../../index.css';
 import RegForm from '../../components/RegForm/RegForm';
 import EnterForm from '../../components/EnterForm/EnterForm';
 import axiosInstance from '../../api/api.js';
-
+import { setActiveOrders, setSoldOrders } from '../../store/reducers/basketReducer';
 import { useAppContext } from '../../context/AppContext';
-
 
 function MainPage(props) {
   const dispatch = useDispatch();
   const ads = useSelector(store => store.ads.ads);
+  const user = useSelector(store => store.user.user);
 
   const { setInput, input, click, select, setSelect, minPrice, setminPrice, maxPrice, setmaxPrice, city, setCity } = useAppContext();
  
@@ -38,7 +38,16 @@ function MainPage(props) {
               setSelect(null);
         });
       }
+
+      const fetchOrders = async () => {
+        await axiosInstance.get(`orders/?buyer=${user.id}`)
+            .then(response => {  
+                dispatch(setActiveOrders(response.data));         
+            })
+            .catch(error => console.error(error));
+      }
       fetchAds();
+      fetchOrders();
   }, [dispatch, click]);
 
   return (

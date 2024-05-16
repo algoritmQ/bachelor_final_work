@@ -33,7 +33,6 @@ function AnotherUserInfoPage(props) {
             .then(response => {  
                 const filteredActiveAds = response.data.filter(element => element.status.name === 'Active');
                 const filteredSoldAds = response.data.filter(element => element.status.name === 'Sold');
-                console.log(response);
                 setUser({
                     first_name: response.data[0].user_id.first_name,
                     last_name: response.data[0].user_id.last_name,

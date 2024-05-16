@@ -7,28 +7,28 @@ let initialState = {
 }
 
 const adsSlice = createSlice({
-    name: 'ads',
-    initialState,
-    reducers: {
-    setAds: (state, {payload}) => {
-        state.ads = payload;
-    },
-    resetAds: (state) => {
-        state.ads = [];
-    },
-    setActiveAds: (state, {payload}) => {
-        state.activeAds = payload;
-    },
-    resetActiveAds: (state) => {
-        state.activeAds = [];
-    },
-    setSoldAds: (state, {payload}) => {
-        state.soldAds = payload;
-       
-    },
-    resetSoldAds: (state) => {
-        state.soldAds = [];
-    }
+        name: 'ads',
+        initialState,
+        reducers: {
+        setAds: (state, {payload}) => {
+            state.ads = payload;
+        },
+        resetAds: (state) => {
+            state.ads = [];
+        },
+        setActiveAds: (state, {payload}) => {
+            state.activeAds = payload;
+        },
+        resetActiveAds: (state) => {
+            state.activeAds = [];
+        },
+        setSoldAds: (state, {payload}) => {
+            state.soldAds = payload;
+        
+        },
+        resetSoldAds: (state) => {
+            state.soldAds = [];
+        }
     }
 });
 export const adsReducer = adsSlice.reducer;
