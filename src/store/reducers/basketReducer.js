@@ -36,9 +36,13 @@ const basketSlice = createSlice({
         },
         incActiveOrders: (state) => {
             state.activeOrdersCount = state.activeOrdersCount + 1;
+        },
+        removeActiveOrder: (state, {payload}) => {
+            state.activeOrders = state.activeOrders.filter(order => order.id !== payload);
+            state.activeOrdersCount = state.activeOrdersCount - 1;
         } 
     }
 });
 
 export const basketReducer = basketSlice.reducer;
-export const { addOrder, setOrders, removeOrder, setActiveOrders, resetActiveOrders, setSoldOrders, resetSoldOrders, incActiveOrders } = basketSlice.actions;
+export const { addOrder, setOrders, removeOrder, setActiveOrders, resetActiveOrders, setSoldOrders, resetSoldOrders, incActiveOrders, removeActiveOrder } = basketSlice.actions;

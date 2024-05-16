@@ -30,7 +30,7 @@ function OrdersPage(props) {
     useEffect(() => {
         async function getMyOrders() {
             await axiosInstance.get(`orders/?buyer=${user.id}`)
-            .then(response => {  
+            .then(response => {
                 dispatch(setActiveOrders(response.data));           
             })
             .catch(error => console.error(error));
@@ -48,41 +48,41 @@ function OrdersPage(props) {
         getOrdersFromMe();
     }, [dispatch]);
     
-  return (
-    <div className = "userInfoPage">
-        <div className = "userInfoPage-title">
-            Корзина объявлений
-        </div>
-        <div className = "userInfoPage-field">
-            <div className = "field-left">
-                <AboutProfile first_name={user.first_name} last_name={user.last_name} city={user.city}/>
+    return (
+        <div className = "userInfoPage">
+            <div className = "userInfoPage-title">
+                Корзина объявлений
             </div>
-            <div className = "field-right">
-                <div className = "field-right-title">
-                    <div onClick = {handleActive}>
-                        {!!(status == 'status-outpubl') ? (<span>Мои заказы</span>) : 
-                        (<span><strong>Мои заказы</strong></span>)}
+            <div className = "userInfoPage-field">
+                <div className = "field-left">
+                    <AboutProfile first_name={user.first_name} last_name={user.last_name} city={user.city}/>
+                </div>
+                <div className = "field-right">
+                    <div className = "field-right-title">
+                        <div onClick = {handleActive}>
+                            {!!(status == 'status-outpubl') ? (<span>Мои заказы</span>) : 
+                            (<span><strong>Мои заказы</strong></span>)}
+                        </div>
+                        <div onClick = {handleNoActive}>
+                            {!!(status == 'status-active') ? (<span>Заказаны у меня</span>) : 
+                            (<span><strong>Заказаны у меня</strong></span>)}
+                        </div>
                     </div>
-                    <div onClick = {handleNoActive}>
-                        {!!(status == 'status-active') ? (<span>Заказаны у меня</span>) : 
-                        (<span><strong>Заказаны у меня</strong></span>)}
+                    <div className = "field-right-ads">
+                        {!!(status == 'status-active') && <div className = "field-right-ads-active">
+                            {!!activeOrders && activeOrders.map(order => (
+                                <LilAd key={order.id} seller={order.seller} publication_date={order.order_date} orderId={order.id} {...order.ad}/>
+                            ))}
+                        </div>}
+                        {!!(status == 'status-outpubl') && <div className = "field-right-ads-out-publ">
+                            {!!soldOrders && soldOrders.map(order => (
+                                <LilAd key={order.id} isSold={true} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
+                            ))}
+                        </div>}                   
                     </div>
                 </div>
-                <div className = "field-right-ads">
-                    {!!(status == 'status-active') && <div className = "field-right-ads-active">
-                        {!!activeOrders && activeOrders.map(order => (
-                            <LilAd key={order.id} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
-                        ))}
-                    </div>}
-                    {!!(status == 'status-outpubl') && <div className = "field-right-ads-out-publ">
-                        {!!soldOrders && soldOrders.map(order => (
-                            <LilAd key={order.id} isSold={true} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
-                        ))}
-                    </div>}                   
-                </div>
             </div>
         </div>
-    </div>
   );
 }
 

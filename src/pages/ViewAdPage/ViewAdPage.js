@@ -6,7 +6,7 @@ import axiosInstance from '../../api/api.js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItem } from '../../store/reducers/itemReducer';
-import { addOrder } from '../../store/reducers/basketReducer';
+import { incActiveOrders } from '../../store/reducers/basketReducer';
 
 function ViewAdPage() {
     const dispatch = useDispatch();
@@ -30,9 +30,12 @@ function ViewAdPage() {
     const hours = time.getHours();
     const minutes = time.getMinutes();
     
-    function addToBusket() {
-        dispatch(addOrder(item));
-        // ЗАПРОС
+    async function addToBusket() {
+        await axiosInstance.post('orders/', {
+            ad: item.id,
+        });
+      
+        dispatch(incActiveOrders());
     }
 
     return (

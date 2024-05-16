@@ -104,7 +104,7 @@ function AdditionAdPage(props) {
               <div className = "oneField2"><input placeholder = "price" value={price} onChange={e => setPrice(e.target.value)}/></div>
               <div className = "bigField2">
                 <div className = "knopka">
-                  <label for = "file-loader-button" htmlFor="file-loader-button">
+                  <label htmlFor="file-loader-button">
                     <BtnGreyRect/>
                   </label>
                   <input

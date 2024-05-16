@@ -8,24 +8,23 @@ import { useEffect } from 'react';
 function AboutProfile({ first_name, last_name, city }) {
 
   return (
-    <div class = "aboutProfile">
-        
-            <div className = "topBar">
+    <div className="aboutProfile">
+            <div className="topBar">
                 <div className="leftBarAvatar">
                     
                 </div>
-                <div className = "rightBar">
-                    <span className = "title">Информация о пользователе</span>
-                    <div className = "allInfo">
-                        <div className = "bar">
-                            <span className = "infoInBar">Имя</span>
-                            <span className = "infoInBar">Фамилия</span>    
-                            <span className = "infoInBar">Город</span>
+                <div className="rightBar">
+                    <span className="title">Информация о пользователе</span>
+                    <div className="allInfo">
+                        <div className="bar">
+                            <span className="infoInBar">Имя</span>
+                            <span className="infoInBar">Фамилия</span>    
+                            <span className="infoInBar">Город</span>
                         </div>
-                        <div className = "bar">
-                            <span className = "infoInBar2">{first_name}</span>
-                            <span className = "infoInBar2">{last_name}</span>
-                            <span className = "infoInBar2">{city}</span>
+                        <div className="bar">
+                            <span className="infoInBar2">{first_name}</span>
+                            <span className="infoInBar2">{last_name}</span>
+                            <span className="infoInBar2">{city}</span>
                         </div>
                     </div>
                 </div>
