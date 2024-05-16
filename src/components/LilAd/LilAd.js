@@ -18,8 +18,7 @@ function LilAd(props) {
         <span className = "timeAd" style = {{fontSize:'12px', color:'rgba(0,0,0,0.5)'}}>{day +'.'+ month + "." + year}</span>
         {!!(props.flag == "User") &&<Link to = {`/ChangeAdPage/${props.id}`}><BtnBlcknWRect name ="Редактировать"/></Link>}
         {props.seller && <span style={{fontSize:'14px', color:'rgba(0,0,0,0.5)'}}>{props.seller.first_name}</span>}
-        {props.seller && <Link to = {`/ChangeAdPage/${props.id}`}><BtnBlcknWRect name ="Удалить заказ"/></Link>}
-
+        {props.seller && !props.isSold && <Link to = {`/ChangeAdPage/${props.id}`}><BtnBlcknWRect name ="Удалить заказ"/></Link>}
       </div>
     );
   }

@@ -42,7 +42,7 @@ function MainPage(props) {
       const fetchOrders = async () => {
         await axiosInstance.get(`orders/?buyer=${user.id}`)
             .then(response => {  
-                dispatch(setActiveOrders(response.data));         
+                dispatch(setActiveOrders(response.data));      
             })
             .catch(error => console.error(error));
       }

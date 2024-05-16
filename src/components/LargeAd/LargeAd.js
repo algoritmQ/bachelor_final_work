@@ -5,7 +5,7 @@ import BtnBlcknWRect from '../buttons/BtnBlcknWRect'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosInstance from '../../api/api';
-import { setActiveOrders, setSoldOrders } from '../../store/reducers/basketReducer';
+import { setActiveOrders, setSoldOrders, incActiveOrders } from '../../store/reducers/basketReducer';
 
 function LargeAd(props) {
   const time = new Date(props.publication_date);
@@ -22,11 +22,7 @@ function LargeAd(props) {
       ad: props.id,
     });
 
-    await axiosInstance.get(`orders/?buyer=${user.id}`)
-      .then(response => {
-          dispatch(setActiveOrders(response.data));
-      })
-      .catch(error => console.log(error));
+    dispatch(incActiveOrders());
   }
   
   return (

@@ -35,8 +35,17 @@ function OrdersPage(props) {
             })
             .catch(error => console.error(error));
         }
+        
+        async function getOrdersFromMe() {
+            await axiosInstance.get(`orders/?seller=${user.id}`)
+            .then(response => {
+                dispatch(setSoldOrders(response.data));
+            })
+            .catch(error => console.error(error));
+        }
 
         getMyOrders();
+        getOrdersFromMe();
     }, [dispatch]);
     
   return (
@@ -67,7 +76,7 @@ function OrdersPage(props) {
                     </div>}
                     {!!(status == 'status-outpubl') && <div className = "field-right-ads-out-publ">
                         {!!soldOrders && soldOrders.map(order => (
-                            <LilAd key={order.id} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
+                            <LilAd key={order.id} isSold={true} seller={order.seller} publication_date={order.order_date} {...order.ad}/>
                         ))}
                     </div>}                   
                 </div>

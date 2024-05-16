@@ -4,6 +4,7 @@ const initialState = {
     orders: [],
     activeOrders: [],
     soldOrders: [],
+    activeOrdersCount: 0,
 }
 
 const basketSlice = createSlice({
@@ -22,19 +23,22 @@ const basketSlice = createSlice({
 
         setActiveOrders: (state, {payload}) => {
             state.activeOrders = payload;
+            state.activeOrdersCount = payload.length;
         },
         resetActiveOrders: (state) => {
             state.activeOrders = [];
         },
         setSoldOrders: (state, {payload}) => {
             state.soldOrders = payload;
-        
         },
         resetSoldOrders: (state) => {
             state.soldOrders = [];
+        },
+        incActiveOrders: (state) => {
+            state.activeOrdersCount = state.activeOrdersCount + 1;
         } 
     }
 });
 
 export const basketReducer = basketSlice.reducer;
-export const { addOrder, setOrders, removeOrder, setActiveOrders, resetActiveOrders, setSoldOrders, resetSoldOrders } = basketSlice.actions;
+export const { addOrder, setOrders, removeOrder, setActiveOrders, resetActiveOrders, setSoldOrders, resetSoldOrders, incActiveOrders } = basketSlice.actions;
