@@ -19,7 +19,7 @@ import AdditionAdPage from './pages/AdditionAdPage/AdditionAdPage';
 import ChangeAdPage from './pages/AdditionAdPage/ChangeAdPage';
 import OrdersPage from './pages/OrdersPage/OrdersPage';
 import UserInfoPage from './pages/UserInfoPage/UserInfoPage';
-import AnotherUserInfoPage from './pages/OrdersPage/OrdersPage';
+import AnotherUserInfoPage from './pages/UserInfoPage/AnotherUserInfoPage';
 import MainPage from './pages/MainPage/MainPage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import axiosInstance from './api/api';
@@ -70,8 +70,8 @@ export const App = () => {
             <Route path = '/ChangeAdPage/:id' element = {<ChangeAdPage/>} />
             <Route path = '/UserInfoPage' element = {<UserInfoPage/>} />
             <Route path = '/OrdersPage' element = {<OrdersPage/>} />
-            <Route path = '/AnotherUserInfoPage/:id' element = {<AnotherUserInfoPage/>} />
-          
+            <Route path = '/AnotherUserInfoPage/:userId' element = {<AnotherUserInfoPage/>} />
+            <Route path = '/EditProfilePage' element = {<EditProfilePage />} />
           </Routes>
                 
         </div>

@@ -1,7 +1,7 @@
 import './ViewAdPage.css';
 import '../.././index.css';
 import BtnBlue50Rect from '../../components/buttons/BtnBlue50Rect'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axiosInstance from '../../api/api.js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,7 +57,7 @@ function ViewAdPage() {
                 <div className = "rightTopBar">
                     <span className = "nameAd">{item?.price}, руб.</span>
                     <div className = "vap-sellerBar">
-                        <span className = "sellerName">{item.user_id?.first_name}</span>
+                        <Link to = {`/AnotherUserInfoPage/${item.user_id?.id}`} user_id = {item.user_id?.id}><span className = "sellerName">{item.user_id?.first_name}</span></Link>
                         {!!(user.username!=item.user_id?.username) && <div onClick={addToBusket}><BtnBlue50Rect name = "Оформить заказ"/></div>}
                     </div>
                     <div className = "date-n-place">

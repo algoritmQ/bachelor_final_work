@@ -3,9 +3,9 @@ import '../../index.css';
 import BtnBlcknWRect from '../buttons/BtnBlcknWRect';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-function AboutProfile(...props) {
-    const user = useSelector(store => store.user.user);
+function AboutProfile({ first_name, last_name, city }) {
 
   return (
     <div class = "aboutProfile">
@@ -23,9 +23,9 @@ function AboutProfile(...props) {
                             <span className = "infoInBar">Город</span>
                         </div>
                         <div className = "bar">
-                            <span className = "infoInBar2">{user.first_name}</span>
-                            <span className = "infoInBar2">{user.last_name}</span>
-                            <span className = "infoInBar2">{user.city}</span>
+                            <span className = "infoInBar2">{first_name}</span>
+                            <span className = "infoInBar2">{last_name}</span>
+                            <span className = "infoInBar2">{city}</span>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import './UserInfoPage.css';
 import '../../index.css';
 import AboutProfile from '../../components/AboutProfile/AboutProfile';
 import LilAd from '../../components/LilAd/LilAd';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { setActiveAds, resetActiveAds, setSoldAds, resetSoldAds } from '../../store/reducers/adsReducer';
 
 import React, {useEffect, useState} from 'react';
@@ -11,7 +11,8 @@ import axiosInstance from '../../api/api';
 
 function AnotherUserInfoPage(props) {
     const [status, setStatus] = useState('status-active');
-    const user = useSelector(store => store.user.user);
+    const { userId } = useParams();
+    const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const activeAds = useSelector(store => store.ads.activeAds);
     const soldAds = useSelector(store => store.ads.soldAds);
@@ -28,17 +29,21 @@ function AnotherUserInfoPage(props) {
 
     useEffect(() => {
         async function getMyAds() {
-            await axiosInstance.get(`ads/?user_id=${user.id}`)
+            await axiosInstance.get(`ads/?user_id=${userId}`)
             .then(response => {  
-                const filteredActiveAds = response.data.filter(element => element.status === 'A');
-                const filteredSoldAds = response.data.filter(element => element.status === 'S');
-                
+                const filteredActiveAds = response.data.filter(element => element.status.name === 'Active');
+                const filteredSoldAds = response.data.filter(element => element.status.name === 'Sold');
+                console.log(response);
+                setUser({
+                    first_name: response.data[0].user_id.first_name,
+                    last_name: response.data[0].user_id.last_name,
+                    city: response.data[0].user_id.city
+                });
                 dispatch(setActiveAds(filteredActiveAds));
                 dispatch(setSoldAds(filteredSoldAds));            
             })
             .catch(error => console.error(error));
         }
-
         getMyAds();
 
 
@@ -51,7 +56,7 @@ function AnotherUserInfoPage(props) {
         </div>
         <div className = "userInfoPage-field">
             <div className = "field-left">
-                <AboutProfile/>
+                <AboutProfile first_name={user.first_name} last_name={user.last_name} city={user.city}/>
             </div>
             <div className = "field-right">
                 <div className = "field-right-title">

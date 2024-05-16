@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function EditProfilePage(props) {
   return (
     <div className = "editProfilePage">
-         <div className = "profile-leftBar"></div>
+         {/*<div className = "profile-leftBar"></div>*/}
          <div className = "profile-rightBar">
             <div className = "profile-rightBar-title">
                 Редактирование профиля

@@ -51,7 +51,7 @@ function UserInfoPage(props) {
         </div>
         <div className = "userInfoPage-field">
             <div className = "field-left">
-                <AboutProfile/>
+                <AboutProfile last_name={user.last_name} first_name={user.first_name} city={user.city}/>
             </div>
             <div className = "field-right">
                 <div className = "field-right-title">

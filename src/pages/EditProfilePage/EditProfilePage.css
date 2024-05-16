@@ -3,7 +3,7 @@
     width:720px;
     height:410px;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .profile-leftBar{
     border:1px solid green;
