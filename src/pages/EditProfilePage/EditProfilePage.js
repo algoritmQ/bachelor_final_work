@@ -7,6 +7,8 @@ import axiosInstance from '../../api/api';
 import { setUser } from '../../store/reducers/userReducer';
 import { useNavigate } from 'react-router';
 import Spin from '../../components/Spin/Spin';
+import { Link } from 'react-router-dom';
+
 
 function EditProfilePage(props) {
   const user = useSelector(store => store.user.user);
@@ -15,6 +17,7 @@ function EditProfilePage(props) {
   const [firstName, setFirstName] = useState(user.first_name);
   const [lastName, setLastName] = useState(user.last_name);
   const [city, setCity] = useState(user.city);
+  const [email, setEmail] = useState(user.email);
   const [phoneNumber, setPhoneNumber] = useState(user.phone_number);
   const [newPassword, setNewPassword] = useState('');
   const navigate = useNavigate();
@@ -29,6 +32,7 @@ function EditProfilePage(props) {
       last_name: lastName,
       city,
       phone_number: phoneNumber,
+      email: email
     })
     .then(() => {
       (async () => {
@@ -62,17 +66,19 @@ function EditProfilePage(props) {
                   <span>Логин</span>
                   <span>Имя</span>
                   <span>Фамилия</span>
-                  <span>Пароль</span>
+                  <span>Почта</span>
                   <span>Город</span>
                   <span>Телефон</span>
+                  <span>Изменить<br/> пароль</span>
                 </div>
                 <div className="profile-rightBar-fields-inputs">
-                  <input placeholder="username" value={login} onChange={(e) => setLogin(e.target.value)} />
-                  <input placeholder="first_name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                  <input placeholder="last_name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                  <input type='password' placeholder="Новый пароль" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
-                  <input placeholder="city" value={city} onChange={(e) => setCity(e.target.value)} />
-                  <input placeholder="phone_number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                  <input maxlength = "12" placeholder="Логин" value={login} onChange={(e) => setLogin(e.target.value)} />
+                  <input maxlength = "16" placeholder="Имя" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                  <input maxlength = "16" placeholder="Фамилия" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                  <input maxlength = "24" placeholder="Почта" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <input maxlength = "16" placeholder="Город" value={city} onChange={(e) => setCity(e.target.value)} />
+                  <input maxlength = "12" placeholder="Телефон" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                  <div style={{cursor:'pointer'}}><Link to = "/EditPassword"><BtnBlueRounded name="Обновить пароль"/></Link></div>
                 </div>
             </div>
             <div className="profile-rightBar-bottom">

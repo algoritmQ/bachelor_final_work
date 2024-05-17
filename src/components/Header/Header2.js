@@ -23,7 +23,7 @@ function Header2(props) {
        
         <div className="middle">
           <div className="search-field">
-            <input value={input} onChange={e => setInput(e.target.value)} className="font-roboto js-mainSearch" placeholder='Поиск объявлений'/>
+            <input maxlength = "21" value={input} onChange={e => setInput(e.target.value)} className="font-roboto js-mainSearch" placeholder='Поиск объявлений'/>
             <HamburgerButton />
           </div>
           <div onClick = {() => {

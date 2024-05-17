@@ -183,9 +183,9 @@ async function activeItem() {
                 />               
               </div>
               <div className = "oneField2">
-                <input placeholder = "name" value={name} onChange={e => setName(e.target.value)}/>
+                <input maxlength = "21" placeholder = "name" value={name} onChange={e => setName(e.target.value)}/>
               </div>
-              <div className = "oneField2"><input placeholder = "price" value={price} onChange={e => setPrice(e.target.value)}/></div>
+              <div className = "oneField2"><input maxlength = "7" placeholder = "price" value={price} onChange={e => setPrice(e.target.value)}/></div>
               <div className = "bigField2">
                 <div className = "knopka">
                   <label for = "addImage">
@@ -219,11 +219,11 @@ async function activeItem() {
           <div className = "textAreas">
             <div className = "shortDescription">
               <span>Краткое описание</span>
-              <textarea value={shortDescription} onChange={e => setShortDescription(e.target.value)}></textarea>
+              <textarea maxlength = "100" value={shortDescription} onChange={e => setShortDescription(e.target.value)}></textarea>
             </div>
             <div className = "largeDescription">
               <span>Подробное описание</span>
-              <textarea value={fullDescription} onChange={e => setFullDescription(e.target.value)}></textarea>     
+              <textarea maxlength = "300" value={fullDescription} onChange={e => setFullDescription(e.target.value)}></textarea>     
               <div onClick={updateItem}><BtnBlue50Rect name = "Обновить объявление" widd = "210px"/></div>
               {/*<div onClick={deleteItem} className = "deleteBtn"><BtnRedRect name = "Снять с публикации" widd = "140px"/></div>
               */}

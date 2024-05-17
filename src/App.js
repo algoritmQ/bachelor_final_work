@@ -22,6 +22,7 @@ import UserInfoPage from './pages/UserInfoPage/UserInfoPage';
 import AnotherUserInfoPage from './pages/UserInfoPage/AnotherUserInfoPage';
 import MainPage from './pages/MainPage/MainPage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
+import EditPassword from './pages/EditPassword/EditPassword';
 import axiosInstance from './api/api';
 
 import { AppProvider } from './context/AppContext';
@@ -45,6 +46,8 @@ export const App = () => {
 
     if (localStorage.getItem('access')) {
       getMe();        
+    } else {
+      setLoading(false);
     }
       // ЗАПРОС ЗА КОРЗИНОЙ
   }, [dispatch]); //, autorized
@@ -75,6 +78,7 @@ export const App = () => {
             <Route path = '/OrdersPage' element = {<OrdersPage/>} />
             <Route path = '/AnotherUserInfoPage/:userId' element = {<AnotherUserInfoPage/>} />
             <Route path = '/EditProfilePage' element = {<EditProfilePage />} />
+            <Route path = '/EditPassword' element = {<EditPassword />} />
           </Routes>
                 
         </div>

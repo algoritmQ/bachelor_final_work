@@ -64,8 +64,8 @@ function EnterForm(props) {
       <form>
         <div className="enterForm" onClick={e => e.stopPropagation()}>
             <span className="title">Вход</span>
-              <input className = "font-roboto" placeholder='Логин' value={login} onChange={e => setLogin(e.target.value)}/>
-              <input className = "font-roboto" placeholder='Пароль' type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+              <input maxlength = "16" className = "font-roboto" placeholder='Логин' value={login} onChange={e => setLogin(e.target.value)}/>
+              <input className = "font-roboto" placeholder='Пароль' type="password" value={password} onChange={e => setPassword(e.target.value)} />
               {/* <div className="my-link" onClick = {() => {setAutorized(true)}}><BtnBlue38Rect name = "Войти"/></div>        */}
               <div className="my-link" onClick = {processEnter}><BtnBlue38Rect name = "Войти"/></div>     
         </div>

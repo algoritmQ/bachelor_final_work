@@ -45,12 +45,12 @@ function RegForm(props) {
     <form>
       <div className="regForm" onClick={e => e.stopPropagation()} >
         <span className="title">Регистрация</span>
-          <input className = "font-roboto" placeholder='Логин' value={login} onChange={e => setLogin(e.target.value)}/>
-          <input className = "font-roboto" placeholder='Имя' value={name} onChange={e => setName(e.target.value)}/>
-          <input className = "font-roboto" placeholder='Фамилия' value={surname} onChange={e => setSurname(e.target.value)}/>
-          <input className = "font-roboto" placeholder='Пароль' type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <input maxlength = "12" className = "font-roboto" placeholder='Логин' value={login} onChange={e => setLogin(e.target.value)}/>
+          <input maxlength = "16" className = "font-roboto" placeholder='Имя' value={name} onChange={e => setName(e.target.value)}/>
+          <input maxlength = "16" className = "font-roboto" placeholder='Фамилия' value={surname} onChange={e => setSurname(e.target.value)}/>
+          <input className = "font-roboto" placeholder='Пароль' type="password" value={password} onChange={e => setPassword(e.target.value)} />
           <input className = "font-roboto" placeholder='Повторите пароль' type="password" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
-          <input className = "font-roboto" placeholder='Город' value={city} onChange={e => setCity(e.target.value)}/>
+          <input maxlength = "16" className = "font-roboto" placeholder='Город' value={city} onChange={e => setCity(e.target.value)}/>
           <div onClick={createUser} style = {{}}><BtnBlue38Rect name = "Зарегистрироваться"/></div>
       </div>
     </form>

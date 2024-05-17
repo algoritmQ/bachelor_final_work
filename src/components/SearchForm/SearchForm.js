@@ -98,10 +98,10 @@ const SearchForm = (props) => {
                 <span style = {{fontSize: '16px', color:'rgba(0,0,0,0.9)'}}>Цена</span>
               </div>
               <div className = 'priceInputs'>
-                <input value={minPrice} onChange={e => setminPrice(e.target.value)} className = 'lilInput minPriceInput' type='text' placeholder = 'от'/>
-                <input value={maxPrice} onChange={e => setmaxPrice(e.target.value)} className = 'lilInput maxPriceInput' type='text' placeholder = 'до'/>
+                <input maxlength = "7" value={minPrice} onChange={e => setminPrice(e.target.value)} className = 'lilInput minPriceInput' type='text' placeholder = 'от'/>
+                <input maxlength = "7" value={maxPrice} onChange={e => setmaxPrice(e.target.value)} className = 'lilInput maxPriceInput' type='text' placeholder = 'до'/>
               </div>
-              <input value={city} onChange={e => setCity(e.target.value)} className = "searchForm-input cityInput" type='text' placeholder = 'Город'/>
+              <input maxlength = "16" value={city} onChange={e => setCity(e.target.value)} className = "searchForm-input cityInput" type='text' placeholder = 'Город'/>
       </DivSearchForm>
     </form>
   );

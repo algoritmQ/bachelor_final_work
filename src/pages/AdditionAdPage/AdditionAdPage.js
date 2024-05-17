@@ -99,9 +99,9 @@ function AdditionAdPage(props) {
                 />
               </div>
               <div className = "oneField2">
-                <input placeholder = "name" value={name} onChange={e => setName(e.target.value)}/>
+                <input type="text" maxlength = "21" placeholder = "Название товара" value={name} onChange={e => setName(e.target.value)}/>
               </div>
-              <div className = "oneField2"><input placeholder = "price" value={price} onChange={e => setPrice(e.target.value)}/></div>
+              <div className = "oneField2"><input placeholder = "Цена" maxlength = "7" value={price} onChange={e => setPrice(e.target.value)}/></div>
               <div className = "bigField2">
                 <div className = "knopka">
                   <label htmlFor="file-loader-button">
@@ -119,7 +119,7 @@ function AdditionAdPage(props) {
                   
                 </div>
                 <div className = "fieldPhotos">
-                  <div className = "onePhoto"></div>
+                  <div className = "onePhoto"><img src = {image}/></div>
                 </div>
 
               </div>
@@ -128,11 +128,11 @@ function AdditionAdPage(props) {
           <div className = "textAreas">
             <div className = "shortDescription">
               <span>Краткое описание</span>
-              <textarea value={shortDescription} onChange={e => setShortDescription(e.target.value)}></textarea>
+              <textarea maxlength = "100" value={shortDescription} onChange={e => setShortDescription(e.target.value)}></textarea>
             </div>
             <div className = "largeDescription">
               <span>Подробное описание</span>
-              <textarea value={fullDescription} onChange={e => setFullDescription(e.target.value)}></textarea>     
+              <textarea maxlength = "300" value={fullDescription} onChange={e => setFullDescription(e.target.value)}></textarea>     
               <div onClick={createItem}><BtnBlue50Rect name = "Добавить объявление" widd = "210px"/></div>      
             </div>
             
