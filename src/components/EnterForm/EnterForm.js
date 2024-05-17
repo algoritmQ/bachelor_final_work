@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setAuth } from '../../store/reducers/userReducer';
+import { setActiveOrders } from '../../store/reducers/basketReducer';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../api/api';
 
@@ -33,13 +34,22 @@ function EnterForm(props) {
       isSuccess = true;
     })
     .catch(error => {
-      console.log(error)
+      console.log('Gроизошла хуйня');
     });
 
     if (isSuccess) {
       await axiosInstance.get(`/users/me/`)
       .then(response => {
         dispatch(setUser(response.data));
+        (async () => {
+          await axiosInstance.get(`orders/?buyer=${response.data.id}`)
+              .then(response => {  
+                  dispatch(setActiveOrders(response.data));      
+              })
+              .catch(error => console.error(error));
+        })();
+
+
         props.setzEnter(-1);
         props.setAutorized(true);
       })

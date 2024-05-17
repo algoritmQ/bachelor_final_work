@@ -36,7 +36,9 @@ function AnotherUserInfoPage(props) {
                 setUser({
                     first_name: response.data[0].user_id.first_name,
                     last_name: response.data[0].user_id.last_name,
-                    city: response.data[0].user_id.city
+                    city: response.data[0].user_id.city,
+                    phone_number:response.data[0].user_id.phone_number,
+                    email:response.data[0].user_id.email,
                 });
                 dispatch(setActiveAds(filteredActiveAds));
                 dispatch(setSoldAds(filteredSoldAds));            
@@ -55,7 +57,7 @@ function AnotherUserInfoPage(props) {
         </div>
         <div className = "userInfoPage-field">
             <div className = "field-left">
-                <AboutProfile first_name={user.first_name} last_name={user.last_name} city={user.city}/>
+                <AboutProfile first_name={user.first_name} last_name={user.last_name} city={user.city} phone_number = {user.phone_number} email={user.email}/>
             </div>
             <div className = "field-right">
                 <div className = "field-right-title">

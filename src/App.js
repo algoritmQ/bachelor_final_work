@@ -30,7 +30,7 @@ import Spin from './components/Spin/Spin';
 export const App = () => {
   const dispatch = useDispatch();
   const [autorized, setAutorized] = useState(useSelector(store => store.user.autorized));
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getMe() {
@@ -39,16 +39,19 @@ export const App = () => {
         dispatch(setUser(response.data));
         setAutorized(true);
       })
-      .catch(error => console.error(error));
+      .catch(error => console.error(error))
+      .finally(() => setLoading(false));
     }
 
     if (localStorage.getItem('access')) {
-      setLoading(true);
       getMe();        
-      setLoading(false);
     }
       // ЗАПРОС ЗА КОРЗИНОЙ
   }, [dispatch]); //, autorized
+
+  if (loading) {
+    return <Spin />
+  }
 
   return (
     <AppProvider>

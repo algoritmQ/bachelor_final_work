@@ -51,7 +51,7 @@ function RegForm(props) {
           <input className = "font-roboto" placeholder='Пароль' type="password" value={password} onChange={e => setPassword(e.target.value)}/>
           <input className = "font-roboto" placeholder='Повторите пароль' type="password" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
           <input className = "font-roboto" placeholder='Город' value={city} onChange={e => setCity(e.target.value)}/>
-          <div onClick={createUser}><BtnBlue38Rect name = "Зарегистрироваться"/></div>
+          <div onClick={createUser} style = {{}}><BtnBlue38Rect name = "Зарегистрироваться"/></div>
       </div>
     </form>
     </>

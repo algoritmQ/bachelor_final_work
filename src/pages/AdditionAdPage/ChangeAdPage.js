@@ -59,7 +59,9 @@ function ChangeAdPage(props) {
     // })
     await axiosInstance.patch(`ads/${adsId}/`, formData)
     // .then(response => console.log(response))
-    .then(navigate("/UserInfoPage"))
+    .then(setTimeout(() => {
+      navigate('/UserInfoPage')
+    }, 75))
     .catch(error => console.error);
   }
   async function soldItem() {
@@ -81,7 +83,9 @@ function ChangeAdPage(props) {
   // })
   await axiosInstance.patch(`ads/${adsId}/`, formData)
   // .then(response => console.log(response))
-  .then(navigate("/UserInfoPage"))
+  .then(setTimeout(() => {
+    navigate('/UserInfoPage')
+  }, 75))
   .catch(error => console.error);
 }
 
@@ -104,14 +108,16 @@ async function activeItem() {
 // })
   await axiosInstance.patch(`ads/${adsId}/`, formData)
   // .then(response => console.log(response))
-  .then(navigate("/UserInfoPage"))
-  .catch(error => console.error);
+  .then(setTimeout(() => {
+    navigate('/UserInfoPage')
+  }, 75))
+  .catch(error => console.error)
 }
 
     async function deleteItem() {
       await axiosInstance.delete(`ads/${adsId}/`, {    })
     // .then(response => console.log(response))
-    .then(navigate("/UserInfoPage"))
+    // .then()
     .catch(error => console.error);
   }
   useEffect(() => {
