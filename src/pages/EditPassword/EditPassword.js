@@ -7,6 +7,7 @@ import axiosInstance from '../../api/api';
 import { setUser } from '../../store/reducers/userReducer';
 import { useNavigate } from 'react-router';
 import Spin from '../../components/Spin/Spin';
+import { useAppContext } from '../../context/AppContext';
 
 
 function EditPassword(props) {
@@ -17,6 +18,7 @@ function EditPassword(props) {
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { setError, setErrorMessage } = useAppContext();
   
   async function processUpdatePassword() {
     //setLoading(true);
@@ -27,9 +29,16 @@ function EditPassword(props) {
       old_password: password,
       new_password: newPassword,
     })
+    .then(() => {
+      navigate('/MainPage');
+    })
     .catch(error => {
-      // показать ошибку данных
-      alert("");
+      console.log(error.request.status);
+      setErrorMessage('Неверные данные');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+      }, 2000)
     }); 
   }
   return (
@@ -47,9 +56,9 @@ function EditPassword(props) {
                   <span>Повторите пароль</span>
                 </div>
                 <div className="profile-rightBar-fields-inputs">
-                    <input className = "font-roboto" placeholder='Старый пароль' type="password" value={password} onChange={e => setPassword(e.target.value)} autoComplete='new-password' />
-                    <input className = "font-roboto" placeholder='Новый пароль' type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
-                    <input className = "font-roboto" placeholder='Повторите пароль' type="password" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
+                    <input className = "font-roboto" placeholder='Старый пароль' type="text" value={password} onChange={e => setPassword(e.target.value)} autoComplete='new-password' />
+                    <input className = "font-roboto" placeholder='Новый пароль' type="text" value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
+                    <input className = "font-roboto" placeholder='Повторите пароль' type="text" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
                 </div>
             </div>
             <div className="profile-rightBar-bottom">

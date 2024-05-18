@@ -12,6 +12,7 @@ import BtnGreyRect from '../../components/buttons/BtnGreyRect';
 import BtnRedRect from '../../components/buttons/BtnRedRect';
 import Select from 'react-select';
 import { setItem } from '../../store/reducers/itemReducer.js';
+import Spin from '../../components/Spin/Spin.jsx';
 
 
 function ChangeAdPage(props) {
@@ -20,7 +21,6 @@ function ChangeAdPage(props) {
     const { item } = useSelector(store => store.item);
     const navigate = useNavigate();
     let arrCategories = []; 
-    let statusName = 0;
     const { categories } = useSelector(store => store.categories);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -30,6 +30,7 @@ function ChangeAdPage(props) {
     const [image, setImage] = useState(null);
     const [status, setStatus] = useState('');
     const [photo, setPhoto] = useState(null);
+    const [loading, setLoading] = useState(false);
     
     function appendCat(v, l){ 
       const cat = {value: v, label: l};
@@ -62,7 +63,7 @@ function ChangeAdPage(props) {
     .then(setTimeout(() => {
       navigate('/UserInfoPage')
     }, 75))
-    .catch(error => console.error);
+    .catch(error => console.error)
   }
   async function soldItem() {
     const categoryId = arrCategories.findIndex(element => element.label === category) + 1;
@@ -86,7 +87,7 @@ function ChangeAdPage(props) {
   .then(setTimeout(() => {
     navigate('/UserInfoPage')
   }, 75))
-  .catch(error => console.error);
+  .catch(error => console.error)
 }
 
 async function activeItem() {
@@ -112,6 +113,7 @@ async function activeItem() {
     navigate('/UserInfoPage')
   }, 75))
   .catch(error => console.error)
+
 }
 
     async function deleteItem() {
@@ -121,18 +123,14 @@ async function activeItem() {
     .catch(error => console.error);
   }
   useEffect(() => {
+    setLoading(true);
     const fetchCategories = async () => {
       await axiosInstance.get('categories/')
       .then(response => {
         dispatch(setCategories(response.data));
       });
     }
-    const fetchStatuses = async () => {
-      await axiosInstance.get('statuses/')
-      .then(response => {
-        dispatch(setStatus(response.data));
-      });
-    }
+
     const fetchItemById = async (adId) => {
       await axiosInstance.get(`ads/${adId}/`)
         .then(response => {
@@ -145,17 +143,21 @@ async function activeItem() {
           setCategory(response.data.category);         
           setImage(response.data.photo);
           setStatus(response.data.status);
-          statusName = response.data.status;
+          
           //status = response.data.status
           //alert(response.data.status.name);
           //statusItem
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error(error))
+        .finally(setLoading(false)); 
     }
-    fetchStatuses();
     fetchCategories();
     fetchItemById(adsId);
   }, [dispatch]);
+
+  if (loading) {
+    <Spin />
+  }
   
   return (
       <div class = "additionAdPage">

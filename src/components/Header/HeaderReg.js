@@ -17,7 +17,8 @@ function HeaderReg({autorized, setAutorized}) {
   
   return (
     <div className="Header">
-        <div className = 'rightBar'>           
+        <div className = 'rightBar'>
+            <Link to = "/FavoritesPage" className = "my-link" style={{color: 'white'}}><span id = "rr2">Избранное</span></Link>           
             <Link to = "/OrdersPage" className = "my-link" style={{color: 'white'}}><span id = "rr">{`Заказы ${activeOrdersCount === 0 ? '' : activeOrdersCount}`} </span></Link>
             <Link to = "/UserInfoPage" className = "my-link" style={{color: 'white'}}><span id = "rr2">Мои объявления</span></Link>
             <Link to = "/AdditionAdPage" className = "my-link" style={{color: 'white'}}><BtnBlue50Rect className = "font-roboto" name="Продать что-нибудь"/></Link>

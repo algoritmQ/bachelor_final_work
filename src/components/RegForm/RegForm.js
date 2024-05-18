@@ -4,6 +4,7 @@ import BtnBlue38Rect from '../buttons/BtnBlue38Rect';
 import { useState } from 'react';
 import axiosInstance from '../../api/api';
 import Spin from '../Spin/Spin';
+import { useAppContext } from '../../context/AppContext';
 
 function RegForm(props) {
   const [login, setLogin] = useState('');
@@ -13,6 +14,7 @@ function RegForm(props) {
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
+  const { setError, setErrorMessage } = useAppContext();
 
   async function createUser() {
     setLoading(true);
@@ -30,8 +32,12 @@ function RegForm(props) {
         props.setzReg(-1);
       })
       .catch(error => {
-        // ТУТ НЕ ОК
-        console.log(error)
+        console.log(error.request.status);
+        setErrorMessage('Неверные данные');
+        setError(1);
+        setTimeout(() => {
+          setError(-1);
+        }, 2000)
       });
     } else {
       // МЕГА КРУТАЯ ОБРАБОТКА ОШИБКИ НЕВЕРНОГО ПАРОЛЯ

@@ -8,6 +8,7 @@ import { setUser } from '../../store/reducers/userReducer';
 import { useNavigate } from 'react-router';
 import Spin from '../../components/Spin/Spin';
 import { Link } from 'react-router-dom';
+import { useAppContext } from '../../context/AppContext';
 
 
 function EditProfilePage(props) {
@@ -22,6 +23,7 @@ function EditProfilePage(props) {
   const [newPassword, setNewPassword] = useState('');
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { setError, setErrorMessage } = useAppContext();
   
   //ОБРАБОТАТЬ 500 от маха
   async function processClick() {
@@ -41,16 +43,22 @@ function EditProfilePage(props) {
           dispatch(setUser(response.data));
           navigate('/MainPage');
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+          console.error(error)
+        })
         //.finally(() => {
         //  setLoading(false);
         //})
         })();
     })
     .catch(error => {
-      console.log(error)
+      console.log(error.request.status);
+      setErrorMessage('Неверные данные');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+      }, 2000)
     });
-    
   }
 
   return (

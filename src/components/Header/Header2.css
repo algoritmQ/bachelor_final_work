@@ -46,3 +46,28 @@
     height:25px;
     border:none;
 }
+
+.ErrorDivWrapper{
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    position:fixed;
+    /* position:sticky; */
+    z-index: -5;
+    width: 1430px;
+    height: 0;
+    opacity: 0; 
+    transition: opacity 1s, z-index 0s 1s;
+    /* border:5px solid green; */
+}
+
+.ErrorDivWrapperShow {
+    z-index: 5;
+    opacity: 1;
+    transition: opacity 1s, z-index 0s;
+}
+
+.ErrorDivWrapperHide {
+    opacity: 0;
+    transition: opacity 1s, z-index 0s 1s;
+}

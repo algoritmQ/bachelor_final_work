@@ -9,6 +9,8 @@ export const AppProvider = ({ children }) => {
   const [minPrice, setminPrice] = useState('');
   const [maxPrice, setmaxPrice] = useState('');
   const [city, setCity] = useState('');
+  const [error, setError] = useState(-1);
+  const [errorMessage, setErrorMessage] = useState('');
 
   return (
     <AppContext.Provider
@@ -25,6 +27,10 @@ export const AppProvider = ({ children }) => {
         setmaxPrice,
         city,
         setCity,
+        error,
+        setError,
+        errorMessage,
+        setErrorMessage,
       }}
     >
       {children}

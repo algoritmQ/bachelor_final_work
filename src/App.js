@@ -11,6 +11,7 @@ import Header2 from './components/Header/Header2';
 import Footer from './components/Footer/Footer';
 import RegForm from './components/RegForm/RegForm';
 import EnterForm from './components/EnterForm/EnterForm';
+import ErrorDiv from './components/ErrorDiv/ErrorDiv';
 
 import LargeAd from './components/LargeAd/LargeAd';
 import LilAd from './components/LilAd/LilAd';
@@ -23,6 +24,7 @@ import AnotherUserInfoPage from './pages/UserInfoPage/AnotherUserInfoPage';
 import MainPage from './pages/MainPage/MainPage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import EditPassword from './pages/EditPassword/EditPassword';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import axiosInstance from './api/api';
 
 import { AppProvider } from './context/AppContext';
@@ -59,7 +61,10 @@ export const App = () => {
   return (
     <AppProvider>
       {loading && <Spin />}
-      <div className="bodyWrapper"> 
+      <div className="bodyWrapper">
+        {/* <div className = "ErrorDivWrapper">
+          <ErrorDiv text = "Неверно введены данные"/> 
+        </div> */}
         {autorized ? 
           <HeaderReg autorized={autorized} setAutorized = {setAutorized}/> : 
           <Header autorized={autorized} setAutorized = {setAutorized} />
@@ -79,6 +84,8 @@ export const App = () => {
             <Route path = '/AnotherUserInfoPage/:userId' element = {<AnotherUserInfoPage/>} />
             <Route path = '/EditProfilePage' element = {<EditProfilePage />} />
             <Route path = '/EditPassword' element = {<EditPassword />} />
+            <Route path = '/FavoritesPage' element = {<FavoritesPage />} />
+            
           </Routes>
                 
         </div>

@@ -9,9 +9,10 @@ import './EnterForm.css';
 import '../.././index.css';
 import BtnBlue38Rect from '../buttons/BtnBlue38Rect'
 import Spin from '../Spin/Spin';
-
+import { useAppContext } from '../../context/AppContext';
 
 function EnterForm(props) {
+  const { setError, setErrorMessage } = useAppContext();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,12 @@ function EnterForm(props) {
       isSuccess = true;
     })
     .catch(error => {
-      console.log('Gроизошла хуйня');
+      console.log(error.request.status);
+      setErrorMessage('Неверные данные');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+      }, 2000)
     });
 
     if (isSuccess) {

@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setItem } from '../../store/reducers/itemReducer';
 import { incActiveOrders } from '../../store/reducers/basketReducer';
 
-
-
 function ViewAdPage() {
     const dispatch = useDispatch();
     const { item } = useSelector(store => store.item);
@@ -77,5 +75,4 @@ function ViewAdPage() {
         </div>
     );
 }
-
 export default ViewAdPage;

@@ -85,7 +85,7 @@ const HamburgerButton = (props) => {
   }, [click]);
 
   function toggleVisibility() {
-    setzInd((-1)*zInd)
+    setzInd((-1)*zInd);
   }
 
   return (
