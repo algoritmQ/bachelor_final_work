@@ -20,6 +20,7 @@ function LargeAd(props) {
   const hours = time.getHours();
   const minutes = time.getMinutes();
   const user = useSelector(store => store.user.user);
+  const { autorized } = useSelector(store => store.user);
   const dispatch = useDispatch();
   const { setError, setErrorMessage, setErrorColor } = useAppContext();
   const [isInFavorite, setIsInFavorite] = useState(props.is_favorite);
@@ -99,8 +100,8 @@ function LargeAd(props) {
           </div>
           <div className = "sellerBar">
             <span className = "sellerName"><span>{props.user_id.first_name}</span></span>
-            {!!(props.user_id.id != user.id) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
-            {!!(props.user_id.id != user.id) && <div onClick={addToFavourities}><Link><BtnBlcknWRect name={isInFavorite ? "Уже в избранном" : "В избранное"} disabled={isInFavorite} /></Link></div>}
+            {autorized && (!!(props.user_id.id != user.id)) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
+            {autorized && (!!(props.user_id.id != user.id)) && <div onClick={addToFavourities}><Link><BtnBlcknWRect name={isInFavorite ? "Уже в избранном" : "В избранное"} disabled={isInFavorite} /></Link></div>}
           </div>          
         </div>
           <div className = "category_ad">

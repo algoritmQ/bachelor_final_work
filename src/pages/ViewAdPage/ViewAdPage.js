@@ -11,6 +11,7 @@ import { incActiveOrders } from '../../store/reducers/basketReducer';
 function ViewAdPage() {
     const dispatch = useDispatch();
     const { item } = useSelector(store => store.item);
+    const { autorized } = useSelector(store => store.user);
     const itemId = useParams().id;
     const user = useSelector(store => store.user.user);
 
@@ -60,7 +61,7 @@ function ViewAdPage() {
                     <span className = "nameAd">{item?.price}, руб.</span>
                     <div className = "vap-sellerBar">
                         <Link to = {`/AnotherUserInfoPage/${item.user_id?.id}`} user_id = {item.user_id?.id}><span className = "sellerName">{item.user_id?.first_name}</span></Link>
-                        {!!(user.username!=item.user_id?.username) && <div onClick={addToBusket}><BtnBlue50Rect name = "Оформить заказ"/></div>}
+                        {autorized && !!(user.username!=item.user_id?.username) && <div onClick={addToBusket}><BtnBlue50Rect name = "Оформить заказ"/></div>}
                     </div>
                     <div className = "date-n-place">
                         <span className = "rr">Город {item.user_id?.city}</span>
