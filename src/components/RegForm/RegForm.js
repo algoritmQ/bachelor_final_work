@@ -40,8 +40,15 @@ function RegForm(props) {
         }, 2000)
       });
     } else {
-      // МЕГА КРУТАЯ ОБРАБОТКА ОШИБКИ НЕВЕРНОГО ПАРОЛЯ
-    }
+        setErrorMessage('Пароли не совпадают');
+        setError(1);
+        setTimeout(() => {
+          setError(-1);
+          setTimeout(() => {
+            setErrorMessage('Неверные данные!');
+          }, 1100)
+        }, 2000)
+      }
     setLoading(false);
   }
 
