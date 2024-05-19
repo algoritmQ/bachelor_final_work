@@ -9,6 +9,7 @@ import axiosInstance from '../../api/api';
 import { incActiveOrders } from '../../store/reducers/basketReducer';
 import { incFavourities } from '../../store/reducers/favouritiesReducer';
 import { useAppContext } from '../../context/AppContext';
+import { useEffect, useState } from 'react';
 
 
 function LargeAd(props) {
@@ -21,6 +22,11 @@ function LargeAd(props) {
   const user = useSelector(store => store.user.user);
   const dispatch = useDispatch();
   const { setError, setErrorMessage, setErrorColor } = useAppContext();
+  const [isInFavorite, setIsInFavorite] = useState(props.is_favorite);
+
+  useEffect(() => {
+    setIsInFavorite(props.is_favorite);
+  }, [props.is_favorite]);
 
   async function addToFavourities(){
     await axiosInstance.post('favorites/', {
@@ -29,6 +35,7 @@ function LargeAd(props) {
     .then(()=>{
       setErrorMessage('Добавлено в избранное');
       setErrorColor('green');
+      setIsInFavorite(!isInFavorite);
       setError(1);
       setTimeout(() => {
         setError(-1);
@@ -93,7 +100,7 @@ function LargeAd(props) {
           <div className = "sellerBar">
             <span className = "sellerName"><span>{props.user_id.first_name}</span></span>
             {!!(props.user_id.id != user.id) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
-            {!!(props.user_id.id != user.id) && <div onClick={addToFavourities}><Link><BtnBlcknWRect name = "В избранное"/></Link></div>}
+            {!!(props.user_id.id != user.id) && <div onClick={addToFavourities}><Link><BtnBlcknWRect name={isInFavorite ? "Уже в избранном" : "В избранное"} disabled={isInFavorite} /></Link></div>}
           </div>          
         </div>
           <div className = "category_ad">

@@ -32,6 +32,7 @@ function MainPage() {
               setmaxPrice('');
               setCity('');
               setSelect(null);
+          console.log(response);
         });
       }
 

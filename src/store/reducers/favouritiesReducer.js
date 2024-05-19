@@ -16,7 +16,7 @@ const favouritiesSlice = createSlice({
             state.favourities = action.payload;
         },
         removeFavourity: (state, action) => {
-            state.favourities = state.favourities.filter(favourity => favourity.id !== action.payload.id);
+            state.favourities = state.favourities.filter(favourity => favourity.id !== action.payload);
         },
         incFavourities: (state) => {
             state.favouritiesCount = state.favouritiesCount + 1;

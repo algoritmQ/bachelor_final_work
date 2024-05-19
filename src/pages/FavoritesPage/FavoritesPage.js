@@ -1,7 +1,8 @@
 import './FavoritesPage.css';
 import '../../index.css';
 import AboutProfile from '../../components/AboutProfile/AboutProfile';
-import LilAd from '../../components/LilAd/LilAd';
+// import LilAd from '../../components/LilAd/LilAd';
+import LilAdFavourite from '../../components/LilAdFavourite/LilAdFavourite';
 import { Link } from 'react-router-dom';
 import { setActiveOrders, setSoldOrders } from '../../store/reducers/basketReducer';
 import { setFavourities } from '../../store/reducers/favouritiesReducer';
@@ -33,6 +34,7 @@ function FavoritesPage(props) {
               });
         } 
         getFavourities();
+        console.log();
     }, [dispatch]);
 
     return (
@@ -48,7 +50,7 @@ function FavoritesPage(props) {
                     <div className = "field-right-ads">
                         <div className = "field-right-ads-active">
                             {favourities.map(favourity => (
-                                <LilAd key={favourity.id} publication_date={favourity.order_date} favourityId={favourity.id} {...favourity.ad}/>
+                                <LilAdFavourite key={favourity.id} publication_date={favourity.fav_date}  favourity_user = {favourity.ad.user_id} favourityId={favourity.id} {...favourity.ad}/>
                             ))}
                         </div>                  
                     </div>
