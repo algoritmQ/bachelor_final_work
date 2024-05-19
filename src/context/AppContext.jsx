@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
   const [city, setCity] = useState('');
   const [error, setError] = useState(-1);
   const [errorMessage, setErrorMessage] = useState('');
+  const [errorColor, setErrorColor] = useState('red');
 
   return (
     <AppContext.Provider
@@ -31,6 +32,8 @@ export const AppProvider = ({ children }) => {
         setError,
         errorMessage,
         setErrorMessage,
+        errorColor, 
+        setErrorColor,
       }}
     >
       {children}

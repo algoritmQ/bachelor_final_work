@@ -1,11 +1,15 @@
 
 import './LargeAd.css';
 import '../.././index.css';
-import BtnBlcknWRect from '../buttons/BtnBlcknWRect'
+import BtnBlcknWRect from '../buttons/BtnBlcknWRect';
+import BtnGreenRect from '../buttons/BtnGreenRect';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosInstance from '../../api/api';
-import { setActiveOrders, setSoldOrders, incActiveOrders } from '../../store/reducers/basketReducer';
+import { incActiveOrders } from '../../store/reducers/basketReducer';
+import { incFavourities } from '../../store/reducers/favouritiesReducer';
+import { useAppContext } from '../../context/AppContext';
+
 
 function LargeAd(props) {
   const time = new Date(props.publication_date);
@@ -16,6 +20,41 @@ function LargeAd(props) {
   const minutes = time.getMinutes();
   const user = useSelector(store => store.user.user);
   const dispatch = useDispatch();
+  const { setError, setErrorMessage, setErrorColor } = useAppContext();
+
+  async function addToFavourities(){
+    await axiosInstance.post('favorites/', {
+      ad: props.id,
+    })
+    .then(()=>{
+      setErrorMessage('Добавлено в избранное');
+      setErrorColor('green');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    }
+    )
+    .catch(error => {
+      console.log(error.request.status);
+      setErrorMessage('Уже в избранном');
+      setErrorColor('red');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    });
+
+    dispatch(incFavourities());
+  }
 
   async function addToBusket() {
     await axiosInstance.post('orders/', {
@@ -54,6 +93,7 @@ function LargeAd(props) {
           <div className = "sellerBar">
             <span className = "sellerName"><span>{props.user_id.first_name}</span></span>
             {!!(props.user_id.id != user.id) && <div onClick={addToBusket}><Link><BtnBlcknWRect name = "Оформить заказ"/></Link></div>}
+            {!!(props.user_id.id != user.id) && <div onClick={addToFavourities}><Link><BtnBlcknWRect name = "В избранное"/></Link></div>}
           </div>          
         </div>
           <div className = "category_ad">

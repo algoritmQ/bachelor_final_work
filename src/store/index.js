@@ -5,6 +5,7 @@ import { itemReducer } from './reducers/itemReducer';
 import { categoriesReducer } from './reducers/categoriesReducer';
 import { chatInfoReducer } from './reducers/chatReducer';
 import { basketReducer } from './reducers/basketReducer';
+import { favouritiesReducer } from './reducers/favouritiesReducer';
 
 export const store = configureStore({
      reducer: {
@@ -14,4 +15,5 @@ export const store = configureStore({
         categories: categoriesReducer,
         chatInfo: chatInfoReducer,
         basket: basketReducer,
+        Favourity: favouritiesReducer
     }});

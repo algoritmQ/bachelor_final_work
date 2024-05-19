@@ -33,6 +33,7 @@ function UserInfoPage(props) {
         async function getMyAds() {
             axiosInstance.get(`ads/?user_id=${user.id}`)
             .then(response => {
+                console.log(response);
                 const filteredActiveAds = response.data.filter(element => element.status.name === 'Active');
                 const filteredSoldAds = response.data.filter(element => element.status.name === 'Sold');
                 
@@ -59,7 +60,6 @@ function UserInfoPage(props) {
 
         }
         getMyAds();
-        console.log(user);
     }, [dispatch]);
 
     if (loading) {

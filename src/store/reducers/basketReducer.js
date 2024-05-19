@@ -40,7 +40,7 @@ const basketSlice = createSlice({
         removeActiveOrder: (state, {payload}) => {
             state.activeOrders = state.activeOrders.filter(order => order.id !== payload);
             state.activeOrdersCount = state.activeOrdersCount - 1;
-        } 
+        }
     }
 });
 

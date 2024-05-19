@@ -6,6 +6,7 @@ import '../../App.css';
 import '../../index.css';
 import axiosInstance from '../../api/api.js';
 import { setActiveOrders } from '../../store/reducers/basketReducer';
+import { setFavourities } from '../../store/reducers/favouritiesReducer.js';
 import { useAppContext } from '../../context/AppContext';
 
 function MainPage() {
@@ -41,8 +42,18 @@ function MainPage() {
             })
             .catch(error => console.error(error));
       }
+
+      async function fetchFavourities() {
+        await axiosInstance.get(`favorites/`)
+        .then(response => {
+            dispatch(setFavourities(response.data));           
+        })
+        .catch(error => { console.error(error) });
+    } 
+
       fetchAds();
       fetchOrders();
+      fetchFavourities();
   }, [dispatch, click]);
 
   return (
