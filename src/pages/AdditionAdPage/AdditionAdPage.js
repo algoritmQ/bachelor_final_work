@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import axiosInstance from '../../api/api.js';
 import { setCategories } from '../../store/reducers/categoriesReducer';
+import { useAppContext } from '../../context/AppContext';
 
 import './AdditionAdPage.css';
 import '../.././index.css';
@@ -27,7 +28,7 @@ function AdditionAdPage(props) {
     const [image, setImage] = useState();
     const [imageURL, setImageURL] = useState();
     const fileReader = new FileReader();
-
+    const { setError, setErrorMessage, setErrorColor } = useAppContext();
     fileReader.onloadend = () => {
       setImageURL(fileReader.result);
     };
@@ -71,8 +72,32 @@ function AdditionAdPage(props) {
     }
 
     await axiosInstance.post('ads/', formData)
-      .then(response => console.log(response))
-      .catch(error => console.error(error));
+    .then(()=>{
+      setErrorMessage('Объявление добавлено');
+      setErrorColor('green');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    }
+    )
+    .catch(error => {
+      console.log(error.request.status);
+      setErrorMessage('Неверные данные');
+      setErrorColor('red');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    })
       navigate("/UserInfoPage");
   }
 
@@ -101,7 +126,7 @@ function AdditionAdPage(props) {
               <div className = "oneField2">
                 <input type="text" maxlength = "21" placeholder = "Название товара" value={name} onChange={e => setName(e.target.value)}/>
               </div>
-              <div className = "oneField2"><input placeholder = "Цена" maxlength = "7" value={price} onChange={e => setPrice(e.target.value)}/></div>
+              <div className = "oneField2"><input placeholder = "Цена" maxlength = "11" value={price} onChange={e => setPrice(e.target.value)}/></div>
               <div className = "bigField2">
                 <div className = "knopka">
                   <label htmlFor="file-loader-button">

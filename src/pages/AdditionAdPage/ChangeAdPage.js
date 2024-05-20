@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../api/api.js';
 import { setCategories } from '../../store/reducers/categoriesReducer';
+import { useAppContext } from '../../context/AppContext';
 
 import './AdditionAdPage.css';
 import '../.././index.css';
@@ -31,7 +32,8 @@ function ChangeAdPage(props) {
     const [status, setStatus] = useState('');
     const [photo, setPhoto] = useState(null);
     const [loading, setLoading] = useState(false);
-    
+    const { setError, setErrorMessage, setErrorColor } = useAppContext();
+
     function appendCat(v, l){ 
       const cat = {value: v, label: l};
       arrCategories.push(cat);
@@ -63,7 +65,32 @@ function ChangeAdPage(props) {
     .then(setTimeout(() => {
       navigate('/UserInfoPage')
     }, 75))
-    .catch(error => console.error)
+    .then(()=>{
+      setErrorMessage('Объявление изменено');
+      setErrorColor('green');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    }
+    )
+    .catch(error => {
+      console.log(error.request.status);
+      setErrorMessage('Неверные данные');
+      setErrorColor('red');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    })
   }
   async function soldItem() {
     const categoryId = arrCategories.findIndex(element => element.label === category) + 1;
@@ -187,7 +214,7 @@ async function activeItem() {
               <div className = "oneField2">
                 <input maxlength = "21" placeholder = "name" value={name} onChange={e => setName(e.target.value)}/>
               </div>
-              <div className = "oneField2"><input maxlength = "7" placeholder = "price" value={price} onChange={e => setPrice(e.target.value)}/></div>
+              <div className = "oneField2"><input maxlength = "11" placeholder = "price" value={price} onChange={e => setPrice(e.target.value)}/></div>
               <div className = "bigField2">
                 <div className = "knopka">
                   <label for = "addImage">

@@ -56,9 +56,9 @@ function EditPassword(props) {
                   <span>Повторите пароль</span>
                 </div>
                 <div className="profile-rightBar-fields-inputs">
-                    <input className = "font-roboto" placeholder='Старый пароль' type="text" value={password} onChange={e => setPassword(e.target.value)} autoComplete='new-password' />
-                    <input className = "font-roboto" placeholder='Новый пароль' type="text" value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
-                    <input className = "font-roboto" placeholder='Повторите пароль' type="text" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
+                    <input className = "font-roboto" placeholder='Старый пароль' type="password" value={password} onChange={e => setPassword(e.target.value)} autoComplete='new-password' />
+                    <input className = "font-roboto" placeholder='Новый пароль' type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
+                    <input className = "font-roboto" placeholder='Повторите пароль' type="password" value={repeatedPassword} onChange={e => setRepeatedPassword(e.target.value)}/>
                 </div>
             </div>
             <div className="profile-rightBar-bottom">
