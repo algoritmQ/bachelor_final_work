@@ -86,7 +86,7 @@ function EditProfilePage(props) {
                   <input maxlength = "24" placeholder="Почта" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <input maxlength = "16" placeholder="Город" value={city} onChange={(e) => setCity(e.target.value)} />
                   <input maxlength = "12" placeholder="Телефон" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-                  <div style={{cursor:'pointer'}}><Link to = "/EditPassword"><BtnBlueRounded name="Обновить пароль"/></Link></div>
+                  <div style={{cursor:'pointer'}}><Link className = "my-link" to = "/EditPassword"><BtnBlueRounded name="Обновить пароль"/></Link></div>
                 </div>
             </div>
             <div className="profile-rightBar-bottom">

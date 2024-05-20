@@ -14,9 +14,9 @@ function Avatar_n_Profile({autorized, setAutorized}) {
         
       </div>
       <div className = "links">
-         <Link to = "/EditProfilePage" id = "LinkName"><span id = "l1">{user.last_name}</span> <span id = "l1">{user.first_name}</span></Link>
+         <Link className = "my-link" to = "/EditProfilePage"><span id = "l1">{user.last_name} {user.first_name}</span></Link>
         <br/>
-        <Link to = "/MainPage"><span id = "l2" onClick = {() => {
+        <Link className = "my-link" to = "/MainPage"><span id = "l2" onClick = {() => {
           dispatch(logout());
           setAutorized(false);
           }}>Выйти из профиля</span></Link>

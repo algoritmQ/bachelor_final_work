@@ -67,6 +67,18 @@ function LargeAd(props) {
   async function addToBusket() {
     await axiosInstance.post('orders/', {
       ad: props.id,
+    })
+    .then(()=>{
+      setErrorMessage('Заказ оформлен');
+      setErrorColor('green');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
     });
 
     dispatch(incActiveOrders());

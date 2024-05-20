@@ -60,7 +60,7 @@ function ViewAdPage() {
                 <div className = "rightTopBar">
                     <span className = "nameAd">{item?.price}, руб.</span>
                     <div className = "vap-sellerBar">
-                        <Link to = {`/AnotherUserInfoPage/${item.user_id?.id}`} user_id = {item.user_id?.id}><span className = "sellerName">{item.user_id?.first_name}</span></Link>
+                        <Link className = "my-link" to = {`/AnotherUserInfoPage/${item.user_id?.id}`} user_id = {item.user_id?.id}><span className = "sellerName">{item.user_id?.first_name}</span></Link>
                         {autorized && !!(user.username!=item.user_id?.username) && <div onClick={addToBusket}><BtnBlue50Rect name = "Оформить заказ"/></div>}
                     </div>
                     <div className = "date-n-place">
