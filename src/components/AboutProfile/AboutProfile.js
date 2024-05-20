@@ -17,11 +17,11 @@ function AboutProfile({ first_name, last_name, city, phone_number, email }) {
                     <span className="title">Информация о пользователе</span>
                     <div className="allInfo">
                         <div className="bar">
-                            <span className="infoInBar">Имя</span>
-                            <span className="infoInBar">Фамилия</span>    
-                            <span className="infoInBar">Город</span>
-                            <span className="infoInBar">Телефон</span>
-                            <span className="infoInBar">Почта</span>
+                            {first_name && <span className="infoInBar">Имя</span>}
+                            {last_name && <span className="infoInBar">Фамилия</span>}    
+                            {city && <span className="infoInBar">Город</span>}
+                            {phone_number && <span className="infoInBar">Телефон</span>}
+                            {!!email && <span className="infoInBar">Почта</span>}
                         </div>
                         <div className="bar">
                             <span className="infoInBar2">{first_name}</span>

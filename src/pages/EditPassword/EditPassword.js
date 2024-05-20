@@ -18,7 +18,7 @@ function EditPassword(props) {
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const { setError, setErrorMessage } = useAppContext();
+  const { setError, setErrorMessage, setErrorColor } = useAppContext();
   
   async function processUpdatePassword() {
     //setLoading(true);
@@ -29,6 +29,19 @@ function EditPassword(props) {
       old_password: password,
       new_password: newPassword,
     })
+    .then(()=>{
+      setErrorMessage('Пароль изменен');
+      setErrorColor('green');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    }
+    )
     .then(() => {
       navigate('/MainPage');
     })

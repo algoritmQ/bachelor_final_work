@@ -23,7 +23,7 @@ function EditProfilePage(props) {
   const [newPassword, setNewPassword] = useState('');
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const { setError, setErrorMessage } = useAppContext();
+  const { setError, setErrorMessage, setErrorColor } = useAppContext();
   
   //ОБРАБОТАТЬ 500 от маха
   async function processClick() {
@@ -36,6 +36,19 @@ function EditProfilePage(props) {
       phone_number: phoneNumber,
       email: email
     })
+    .then(()=>{
+      setErrorMessage('Данные изменены');
+      setErrorColor('green');
+      setError(1);
+      setTimeout(() => {
+        setError(-1);
+        setTimeout(() => {
+          setErrorColor('red');
+          setErrorMessage('Неверные данные!');
+        }, 1100)
+      }, 2000)
+    }
+    )
     .then(() => {
       (async () => {
         await axiosInstance.get('/users/me/')

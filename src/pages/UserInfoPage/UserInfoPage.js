@@ -72,7 +72,7 @@ function UserInfoPage(props) {
             Профиль и объявления
         </div>
         <div className = "userInfoPage-field">
-            <div className = "field-left">
+            <div className = "infopage-field-left">
                 <AboutProfile last_name={user.last_name} first_name={user.first_name} city={user.city} phone_number = {user.phone_number} email={user.email}/>
             </div>
             <div className = "field-right">
