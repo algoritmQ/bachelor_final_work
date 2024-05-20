@@ -92,6 +92,10 @@
     color:#017805;
     font-size:28px;
 }
+.rightTopBar .sellerName:hover{
+    color:red;
+    font-size:28px;
+}
 
 .rightTopBar .date-n-place{
     display:flex;

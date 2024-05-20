@@ -14,7 +14,7 @@ function RegForm(props) {
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
-  const { setError, setErrorMessage } = useAppContext();
+  const { setError, setErrorMessage, setErrorColor } = useAppContext();
 
   async function createUser() {
     setLoading(true);
@@ -26,11 +26,20 @@ function RegForm(props) {
         'password': password,
         'city': city,
       })
-      .then(response => {
-        // ТИПО ВСЁ ОК И МЫ Зарегались
-        // alert('Пользователь создан!');
+      .then(()=>{
+        setErrorMessage('Пользователь создан');
+        setErrorColor('green');
+        setError(1);
+        setTimeout(() => {
+          setError(-1);
+          setTimeout(() => {
+            setErrorColor('red');
+            setErrorMessage('Неверные данные!');
+          }, 1100)
+        }, 2000);
         props.setzReg(-1);
-      })
+      }
+      )
       .catch(error => {
         console.log(error.request.status);
         setErrorMessage('Неверные данные');

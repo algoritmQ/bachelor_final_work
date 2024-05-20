@@ -48,6 +48,7 @@ function ViewAdPage() {
                             <img className ="mImg" src = {item?.photo}/>
                         </div>
                         <div className = "restPhotos">
+                            <p style = {{fontSize:"20px"}}><span style = {{color:"#0B107E"}}>Категория:</span> {item?.category?.title}</p>
                         </div>
                     </div>
                     <span className = "title2">
